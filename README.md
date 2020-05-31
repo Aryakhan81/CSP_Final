@@ -1,6 +1,5 @@
 # CSP_Final
-#test
-#test 2
-#hehehehhdvqucvj
-#h3
-#heh
+### This is Arya and Seb's final project for AP Computer Science Principles.
+
+# Project Proposal
+### Coming Soon!
