@@ -25,12 +25,15 @@ void toWelcomeScreen() {
   //print welcome and instruction text
   textSize(32);
   fill(0);
-  text("welcome to Physics CollisionSim!", 200, 200);
-
+  text("Welcome to Physics CollisionSim!", 200, 200);
+  textSize(16);
+  text("Use the sliders to adjust the mass of each blcok, the coefficient of friction, and the initial velocity of each block." +
+  )
 }
 
 void settings() {
   //Decide on screen size here
+  size(800, 800);
 }
 
 void draw() {
