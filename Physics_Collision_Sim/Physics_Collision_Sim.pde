@@ -12,13 +12,13 @@ public static Screen currentScreen = Screen.WELCOME;
 
 //buttons
 Button startButton = new Button(325, 475, 150, 50, "Start!", Screen.SIMULATOR);
+Button restartButton = new Button(325, 475, 150, 50, "Start Over", Screen.SIMULATOR);
 
 //Screen options
 public enum Screen {
   //What screens do we want to have?
   WELCOME,
-  SIMULATOR,
-  RESTART
+  SIMULATOR
   //do we want to have a data screen where the velocities etc are displayed after the collision?
   //maybe add graphs?
 }
@@ -39,13 +39,24 @@ void toWelcomeScreen() {
   startButton.create(58, 31);
 }
 
+void simulator() {
+  //this is where the code for the simulator goes
+}
+
 void settings() {
   //Decide on screen size here
   size(800, 800);
 }
 
 void draw() {
-  //The heart of our program
+  //Do something depending on which screen is active
+  switch(currentScreen) {
+    case WELCOME:
+      toWelcomeScreen();
+      break;
+    case SIMULATOR:
+      simulator();
+  }
 }
 
 void mouseClicked() {
