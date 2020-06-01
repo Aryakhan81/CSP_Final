@@ -6,7 +6,8 @@
 -> Functions setting the screen upon each screen transition
 -> setup(), draw() and mouseClicked()
 **/
-
+//global variable that shows the current screen
+public static Screen currentScreen = Screen.WELCOME;
 
 //Screen options
 public enum Screen {
@@ -20,7 +21,12 @@ public enum Screen {
 
 void toWelcomeScreen() {
   background(200);
-  
+
+  //print welcome and instruction text
+  textSize(32);
+  fill(0);
+  text("welcome to Physics CollisionSim!", 200, 200);
+
 }
 
 void settings() {
