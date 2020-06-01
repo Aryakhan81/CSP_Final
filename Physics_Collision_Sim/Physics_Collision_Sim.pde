@@ -39,6 +39,10 @@ void toWelcomeScreen() {
   startButton.create(58, 31);
 }
 
+void simulator() {
+  //this is where the code for the simulator goes
+}
+
 void settings() {
   //Decide on screen size here
   size(800, 800);
