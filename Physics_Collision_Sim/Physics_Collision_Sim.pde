@@ -9,6 +9,9 @@
 //global variable that shows the current screen
 public static Screen currentScreen = Screen.WELCOME;
 
+//buttons
+Button startButton = new Button(325, 475, 150, 50, "Start!", Screen.SIMULATOR);
+
 //Screen options
 public enum Screen {
   //What screens do we want to have?
