@@ -34,6 +34,9 @@ void toWelcomeScreen() {
   text("Use the sliders to adjust the mass of each blcok, the coefficient of friction, and the initial velocity of each block." +
   " Use the buttons to toggle between elastic and inelastic for the collision." +
   " Press the start button to begin. Have Fun!", 200, 275, 400, 200);
+
+  //Create the "start" button
+  startButton.create(58, 31);
 }
 
 void settings() {
