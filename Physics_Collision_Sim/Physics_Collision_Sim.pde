@@ -18,6 +18,11 @@ public enum Screen {
   //maybe add graphs?
 }
 
+void toWelcomeScreen() {
+  background(200);
+  
+}
+
 void settings() {
   //Decide on screen size here
 }
