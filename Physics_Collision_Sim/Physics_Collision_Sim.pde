@@ -1,5 +1,5 @@
 /**
-TODO:
+//TODO:
 -----------
 -> Enumeration for the screen names
 -> Classes for Buttons, Sliders and Two-Way Buttons
@@ -11,6 +11,11 @@ TODO:
 //Screen options
 public enum Screen {
   //What screens do we want to have?
+  WELCOME,
+  SIMULATOR,
+  RESTART
+  //do we want to have a data screen where the velocities etc are displayed after the collision?
+  //maybe add graphs?
 }
 
 void settings() {
@@ -22,5 +27,5 @@ void draw() {
 }
 
 void mouseClicked() {
-  //This is where we put the "if clicked" code for the buttons, 
+  //This is where we put the "if clicked" code for the buttons,
 }
