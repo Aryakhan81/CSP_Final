@@ -6,6 +6,7 @@
 -> Functions setting the screen upon each screen transition
 -> setup(), draw() and mouseClicked()
 **/
+
 //global variable that shows the current screen
 public static Screen currentScreen = Screen.WELCOME;
 
