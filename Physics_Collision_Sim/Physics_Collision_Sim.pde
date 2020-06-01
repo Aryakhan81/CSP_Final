@@ -56,6 +56,7 @@ void draw() {
       break;
     case SIMULATOR:
       simulator();
+      break;
   }
 }
 
