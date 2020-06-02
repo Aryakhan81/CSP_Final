@@ -62,4 +62,16 @@ void draw() {
 
 void mouseClicked() {
   //This is where we put the "if clicked" code for the buttons,
+  //Check for a different object being clicked based on the active screen
+  switch(currentScreen) {
+    case WELCOME:
+      //check if the "start" button is clicked
+      if(startButton.checkClick()) {
+        currentScreen = startButton.switchToScreen;
+        //here is where we might want to reset the physics values to default
+      }
+      break;
+    case SIMULATOR:
+      //here is where we put the code for the buttons inside the simulator
+  }
 }
