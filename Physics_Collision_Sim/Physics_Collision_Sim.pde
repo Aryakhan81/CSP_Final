@@ -73,5 +73,6 @@ void mouseClicked() {
       break;
     case SIMULATOR:
       //here is where we put the code for the buttons inside the simulator
+      //here is where we might want to reset the physics values to default
   }
 }
