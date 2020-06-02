@@ -31,7 +31,8 @@ void toWelcomeScreen() {
   fill(0);
   text("Welcome to Physics CollisionSim!", 475, 200);
   textSize(16);
-  text("Use the sliders to adjust the mass of each block, the coefficient of friction, and the initial velocity of each block." +
+  text("Use the sliders to adjust the mass of each block, the coefficient of" +
+  " friction, and the initial velocity of each block." +
   " Use the buttons to toggle between elastic and inelastic for the collision." +
   " Press the start button to begin. Have Fun!", 200, 275, 1100, 200);
 
