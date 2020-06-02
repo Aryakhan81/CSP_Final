@@ -1,3 +1,11 @@
+/**
+Usage: In the main class, in order to properly use the paired buttons, one needs to create:
+-> Two instances of TwoWayButton
+-> Set the parameter "partner" for the first button to null
+-> Set the parameter "partner" for the second button to the first button
+-> In the function that dictates the screen, set the value of first_button.partner to the second button
+**/
+
 class TwoWayButton extends Button {
   TwoWayButton partner;
   boolean isInitial;
@@ -39,11 +47,14 @@ class TwoWayButton extends Button {
   
   //Run ONLY in mouseClicked() to see if this button was actually the one being clicked
   public void updateClickStatus() {
-    
+
     //If I am clicked, turn me on to click mode and my partner off
     if(this.checkClick()) {
       this.isClicked = true;
-      partner.isClicked = false;
+    } else if (!this.checkClick() && partner.checkClick()) {
+      this.isClicked = false;
+    } else {
+      return;
     }
       
   }
