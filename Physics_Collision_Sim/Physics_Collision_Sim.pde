@@ -83,3 +83,7 @@ void mouseClicked() {
       break;
   }
 }
+
+void mouseDragged() {
+  //Code for the sliders
+}
