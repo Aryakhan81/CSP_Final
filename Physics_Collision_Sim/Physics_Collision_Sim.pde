@@ -12,7 +12,7 @@ public static Screen currentScreen = Screen.WELCOME;
 
 //buttons
 Button startButton = new Button(650, 475, 150, 50, "Start!", Screen.SIMULATOR);
-Button restartButton = new Button(325, 475, 150, 50, "Start Over", Screen.SIMULATOR);
+Button restartButton = new Button(1330, 930, 150, 50, "Start Over", Screen.SIMULATOR);
 
 //Screen options
 public enum Screen {
@@ -41,6 +41,7 @@ void toWelcomeScreen() {
 
 void simulator() {
   background(200);
+  restartButton.create(38, 31);
   //this is where the design for the simulator screen should go
 }
 
