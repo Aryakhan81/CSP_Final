@@ -29,7 +29,7 @@ void toWelcomeScreen() {
   //print welcome and instruction text
   textSize(32);
   fill(0);
-  text("Welcome to Physics CollisionSim!", 200, 200);
+  text("Welcome to Physics CollisionSim!", 150, 200);
   textSize(16);
   text("Use the sliders to adjust the mass of each block, the coefficient of friction, and the initial velocity of each block." +
   " Use the buttons to toggle between elastic and inelastic for the collision." +
