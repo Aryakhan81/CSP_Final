@@ -40,7 +40,8 @@ void toWelcomeScreen() {
 }
 
 void simulator() {
-  //this is where the code for the simulator goes
+  background(200);
+  //this is where the design for the simulator screen should go
 }
 
 void settings() {
