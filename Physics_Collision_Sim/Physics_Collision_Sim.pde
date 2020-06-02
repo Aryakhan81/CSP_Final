@@ -11,8 +11,8 @@
 public static Screen currentScreen = Screen.WELCOME;
 
 //buttons
-Button startButton = new Button(650, 475, 150, 50, "Start!", Screen.SIMULATOR);
-Button restartButton = new Button(1330, 930, 150, 50, "Start Over", Screen.SIMULATOR);
+Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
+Button restartButton = new Button(1030, 730, 150, 50, "Start Over", Screen.SIMULATOR);
 
 //Screen options
 public enum Screen {
@@ -29,11 +29,11 @@ void toWelcomeScreen() {
   //print welcome and instruction text
   textSize(32);
   fill(0);
-  text("Welcome to Physics CollisionSim!", 475, 200);
+  text("Welcome to Physics CollisionSim!", 350, 200);
   textSize(16);
   text("Use the sliders to adjust the mass of each block, the coefficient of friction, and the initial velocity of each block." +
   " Use the buttons to toggle between elastic and inelastic for the collision." +
-  " Press the start button to begin. Have Fun!", 200, 275, 1100, 200);
+  " Press the start button to begin. Have Fun!", 200, 275, 900, 200);
 
   //Create the "start" button
   startButton.create(58, 31);
@@ -47,7 +47,7 @@ void simulator() {
 
 void settings() {
   //Decide on screen size here
-  size(1500, 1000);
+  size(1200, 800);
 }
 
 void draw() {
