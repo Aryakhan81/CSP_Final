@@ -1,8 +1,5 @@
 class Button {
-  float x;
-  float y;
-  float width;
-  float height;
+  float x, y, width, height;
   String text;
   Screen switchToScreen;
 

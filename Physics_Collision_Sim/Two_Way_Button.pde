@@ -6,8 +6,7 @@ Usage: In the main class, in order to properly use the paired buttons, one needs
 
 class TwoWayButton extends Button {
   TwoWayButton partner;
-  boolean isInitial;
-  boolean isClicked;
+  boolean isInitial, isClicked;
   
   //Two-Way button constructor: same as a button, but you choose its partner
   public TwoWayButton(float x, float y, float width, float height, String text, boolean isInitial) {
