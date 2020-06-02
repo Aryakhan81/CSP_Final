@@ -1,9 +1,7 @@
 /**
 Usage: In the main class, in order to properly use the paired buttons, one needs to create:
 -> Two instances of TwoWayButton
--> Set the parameter "partner" for the first button to null
--> Set the parameter "partner" for the second button to the first button
--> In the function that dictates the screen, set the value of first_button.partner to the second button
+-> In the function that controls the screen that the buttons are on, use the setPartner(TwoWayButton partner) function
 **/
 
 class TwoWayButton extends Button {
@@ -12,10 +10,9 @@ class TwoWayButton extends Button {
   boolean isClicked;
   
   //Two-Way button constructor: same as a button, but you choose its partner
-  public TwoWayButton(float x, float y, float width, float height, String text, TwoWayButton partner, boolean isInitial) {
+  public TwoWayButton(float x, float y, float width, float height, String text, boolean isInitial) {
     
     super(x, y, width, height, text);
-    this.partner = partner;
     this.isInitial = isInitial;
     //If the button is the initial button to be clicked, it needs to act clicked
     this.isClicked = isInitial;
@@ -57,5 +54,11 @@ class TwoWayButton extends Button {
       return;
     }
       
+  }
+  
+  //Use this to set the button's partner. Must be done inside of the function that the screen is on.
+  //This allows for a single pair to be reused on multiple screens
+  public void setPartner(TwoWayButton partner) {
+    this.partner = partner;
   }
 }
