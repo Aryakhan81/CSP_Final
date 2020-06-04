@@ -38,4 +38,11 @@ class Slider extends Button {
       return;
     }
   }
+  
+  //Get the value of the slider a its current position
+  public void updateCurrentValue() {
+    float percentageCovered = (this.x)/(this.lineX + this.lineLength);
+    float scaledValue = percentageCovered * maxValue;
+    this.currentValue = scaledValue;
+  }
 }
