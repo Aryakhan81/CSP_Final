@@ -1,4 +1,4 @@
-class Slider extends Button{
+class Slider extends Button {
   float lineX, lineY, lineLength, minValue, maxValue, currentValue;
   
   //Constructor
