@@ -18,7 +18,9 @@ Button restartButton = new Button(1030, 730, 150, 50, "Start Over", Screen.SIMUL
 TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", false);
 TwoWayButton inelasticButton = new TwoWayButton(1000, 200, 150, 50, "inelastic", true);
 //sliders
-
+Slider frictionSlider = new Slider(862, 350, 0, 1);
+Slider initalVelocity1Slider = new Slider(862, 450, 0, 10);
+Slider initialVelocity2Slider = new Slider(862, 550, -10, 0);
 
 //Screen options
 public enum Screen {
@@ -50,10 +52,21 @@ void simulator() {
   background(200);
   restartButton.create(38, 31);
   //this is where the design for the simulator screen should go
+  //creates the two-way buttons and assigns them as partners
   elasticButton.create(53, 31);
   inelasticButton.create(45, 31);
   elasticButton.setPartner(inelasticButton);
   inelasticButton.setPartner(elasticButton);
+  //creates the sliders
+  frictionSlider.create(0, 35);
+  initalVelocity1Slider.create(0, 35);
+  initialVelocity2Slider.create(0, 35);
+  //creates the titles for the Sliders
+  fill(0);
+  text("Friction", 862, 335);
+  text("Initial velocity of block 1", 862, 435);
+  text("Initial velocity of block 2", 862, 535);
+
 }
 
 void settings() {
@@ -99,4 +112,7 @@ void mouseClicked() {
 
 void mouseDragged() {
   //Code for the sliders
+  frictionSlider.respondToDrag();
+  initalVelocity1Slider.respondToDrag();
+  initialVelocity2Slider.respondToDrag();
 }
