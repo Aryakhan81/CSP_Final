@@ -19,7 +19,7 @@ TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", fals
 TwoWayButton inelasticButton = new TwoWayButton(1000, 200, 150, 50, "inelastic", true);
 //sliders
 Slider frictionSlider = new Slider(862, 350, 0, 1);
-Slider initalVelocity1Slider = new Slider(862, 450, 0, 10);
+Slider initialVelocity1Slider = new Slider(862, 450, 0, 10);
 Slider initialVelocity2Slider = new Slider(862, 550, -10, 0);
 
 //Screen options
@@ -59,13 +59,21 @@ void simulator() {
   inelasticButton.setPartner(elasticButton);
   //creates the sliders
   frictionSlider.create(0, 35);
-  initalVelocity1Slider.create(0, 35);
+  initialVelocity1Slider.create(0, 35);
   initialVelocity2Slider.create(0, 35);
   //creates the titles for the Sliders
   fill(0);
   text("Friction", 862, 335);
   text("Initial velocity of block 1", 862, 435);
   text("Initial velocity of block 2", 862, 535);
+  //update the current value of the sliders
+  frictionSlider.updateCurrentValue();
+  initialVelocity1Slider.updateCurrentValue();
+  initialVelocity2Slider.updateCurrentValue();
+  //create a text area that displays the current value of each slider
+  text(frictionSlider.currentValue, 1000, 350);
+  text(initialVelocity1Slider.currentValue, 1000, 450);
+  text(initialVelocity2Slider.currentValue, 1000, 550);
 
 }
 
@@ -113,6 +121,6 @@ void mouseClicked() {
 void mouseDragged() {
   //Code for the sliders
   frictionSlider.respondToDrag();
-  initalVelocity1Slider.respondToDrag();
+  initialVelocity1Slider.respondToDrag();
   initialVelocity2Slider.respondToDrag();
 }
