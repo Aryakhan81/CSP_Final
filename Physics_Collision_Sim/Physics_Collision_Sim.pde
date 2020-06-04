@@ -14,6 +14,12 @@ public static Screen currentScreen = Screen.WELCOME;
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
 Button restartButton = new Button(1030, 730, 150, 50, "Start Over", Screen.SIMULATOR);
 
+//two way Buttons
+TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", false);
+TwoWayButton inelasticButton = new TwoWayButton(1000, 200, 150, 50, "inelastic", true);
+//sliders
+
+
 //Screen options
 public enum Screen {
   //What screens do we want to have?
@@ -44,6 +50,10 @@ void simulator() {
   background(200);
   restartButton.create(38, 31);
   //this is where the design for the simulator screen should go
+  elasticButton.create(53, 31);
+  inelasticButton.create(45, 31);
+  elasticButton.setPartner(inelasticButton);
+  inelasticButton.setPartner(elasticButton);
 }
 
 void settings() {
@@ -80,6 +90,9 @@ void mouseClicked() {
         currentScreen = restartButton.switchToScreen;
         //here is where we might want to reset the physics values to default
       }
+      //here is where we update which is the clicked button in the two-way button
+      elasticButton.updateClickStatus();
+      inelasticButton.updateClickStatus();
       break;
   }
 }
