@@ -52,7 +52,9 @@ void toWelcomeScreen() {
 
 void simulator() {
   background(200);
+  //create the start and restart buttons
   restartButton.create(38, 31);
+  startSimButton.create(58, 31);
   //this is where the design for the simulator screen should go
   //creates the two-way buttons and assigns them as partners
   elasticButton.create(53, 31);
