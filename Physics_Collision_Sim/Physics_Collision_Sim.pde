@@ -17,10 +17,11 @@ Button restartButton = new Button(1030, 730, 150, 50, "Start Over", Screen.SIMUL
 //two way Buttons
 TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", false);
 TwoWayButton inelasticButton = new TwoWayButton(1000, 200, 150, 50, "inelastic", true);
+
 //sliders
 Slider frictionSlider = new Slider(862, 350, 0, 1);
 Slider initialVelocity1Slider = new Slider(862, 450, 0, 10);
-Slider initialVelocity2Slider = new Slider(862, 550, -10, 0);
+Slider initialVelocity2Slider = new Slider(862, 550, 0, -10);
 
 //Screen options
 public enum Screen {
@@ -63,7 +64,7 @@ void simulator() {
   initialVelocity2Slider.create(0, 35);
   //creates the titles for the Sliders
   fill(0);
-  text("Friction", 862, 335);
+  text("Coefficient of friction", 862, 335);
   text("Initial velocity of block 1", 862, 435);
   text("Initial velocity of block 2", 862, 535);
   //update the current value of the sliders

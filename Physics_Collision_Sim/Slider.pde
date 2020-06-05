@@ -1,3 +1,11 @@
+/**
+Usage: In the main class, in order to properly use the slider, one needs to create:
+-> An instance of Slider
+-> Inside of the mouseDragged() function, call the respondToDrag() method
+-> Call both the create(textX, textY) and updateCurrentValue() methods in the function for the desired screen
+-> To get the value of the slider, use the instance variable slider.currentValue
+**/
+
 class Slider extends Button {
   float lineX, lineY, lineLength, minValue, maxValue, currentValue;
   
@@ -28,12 +36,20 @@ class Slider extends Button {
   
   //Respond to being dragged. Will make use of checkClick() from superclass
   public void respondToDrag() {
+    
+    //If the slider button is within bounds, set its x coord to that of the mouse
     if(this.checkClick() && this.x <= this.lineX + this.lineLength && this.x >= this.lineX) {
       this.x = mouseX - 12.5;
+      
+    //If it went out of bounds to the right, set it to the rightmost point
     } else if(this.x >= this.lineX + this.lineLength) {
-      this.x = this.lineX + this.lineLength - 25;
+      this.x = this.lineX + this.lineLength;
+    
+    //If it went out of bounds to the left, se it to the leftmost point
     } else if(this.x <= this.lineX) {
       this.x = this.lineX;
+      
+    //This just makes it look clean
     } else {
       return;
     }
@@ -41,7 +57,7 @@ class Slider extends Button {
   
   //Get the value of the slider a its current position
   public void updateCurrentValue() {
-    float percentageCovered = (this.x)/(this.lineX + this.lineLength);
+    float percentageCovered = (this.x - this.lineX)/this.lineLength;
     float scaledValue = percentageCovered * maxValue;
     this.currentValue = scaledValue;
   }
