@@ -2,9 +2,10 @@
 //TODO:
 -----------
 -> Enumeration for the screen names - DONE
--> Classes for Buttons, Sliders and Two-Way Buttons
+-> Classes for Buttons, Sliders and Two-Way Buttons - DONE
 -> Functions setting the screen upon each screen transition
 -> setup(), draw() and mouseClicked()
+-> Functions for elastic and inelastic collisions
 **/
 
 //global variable that shows the current screen

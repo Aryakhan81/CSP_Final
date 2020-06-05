@@ -3,8 +3,6 @@ class Block {
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, momentum, x, y, width, height;
   float gravity = 9.8;
-// mass1 * velocity1 = velocity2 * mass2 = momentum
-// calculate without friction first
   
   public Block(float velocity, float mass, float x, float y) {
     this.velocity = velocity;
@@ -14,7 +12,24 @@ class Block {
     this.y = y;
     this.width = this.height = 50;
   }
-  private void checkCollision(Block collideWith) {
-
+  
+  //Create the image of the block
+  public void create() {
+    
+  }
+  
+  //Update the block's kinematic quantities
+  public void update() {
+    //Will call this.create()
+  }
+  //Check to see if they have collided
+  public boolean hasCollided(Block collideWith) {
+    if(this.x < collideWith.x && this.x + this.width >= collideWith.x) {
+      return true;
+    } else if(this.x > collideWith.x && this.x <= collideWith.x + collideWith.width) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
