@@ -34,6 +34,32 @@ public enum Screen {
   //maybe add graphs?
 }
 
+//Do elastic collision. Formula found from socratic.org by Cosmic Defect 
+void elasticCollision(Block block1, Block block2) {
+  float initialVelocity1 = block1.velocity;
+  float initialVelocity2 = block2.velocity;
+  float mass1 = block1.mass;
+  float mass2 = block2.mass;
+  
+  float finalVelocity1 = ((mass1 - mass2)/(mass1 + mass2)) * initialVelocity1 + ((2 * mass2)/(mass1 + mass2)) * initialVelocity2;
+  float finalVelocity2 = ((2 * mass1)/(mass1 + mass2)) * initialVelocity1 + ((mass2 - mass1)/(mass1 + mass2)) * initialVelocity2;
+  
+  block1.velocity = finalVelocity1;
+  block2.velocity = finalVelocity2;
+}
+
+//Do inelastic collision. I derived the formula myself
+void inelasticCollision(Block block1, Block block2) {
+  float initialVelocity1 = block1.velocity;
+  float initialVelocity2 = block2.velocity;
+  float mass1 = block1.mass;
+  float mass2 = block2.mass;
+  
+  float finalVelocity = ((mass1 * initialVelocity1) + (mass2 * initialVelocity2))/(mass1 + mass2);
+  
+  block1.velocity = block2.velocity = finalVelocity;
+}
+
 void toWelcomeScreen() {
   background(200);
 
