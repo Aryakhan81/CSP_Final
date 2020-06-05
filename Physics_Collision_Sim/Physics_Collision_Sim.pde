@@ -13,6 +13,7 @@ public static Screen currentScreen = Screen.WELCOME;
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
 Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
+Button startSimButton = new Button(500, 700, 150, 50, "Start!");
 
 //two way Buttons
 TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", false);
@@ -51,7 +52,9 @@ void toWelcomeScreen() {
 
 void simulator() {
   background(200);
+  //create the start and restart buttons
   restartButton.create(38, 31);
+  startSimButton.create(58, 31);
   //this is where the design for the simulator screen should go
   //creates the two-way buttons and assigns them as partners
   elasticButton.create(53, 31);
@@ -123,6 +126,9 @@ void mouseClicked() {
         initialVelocity1Slider.updateCurrentValue();
         initialVelocity2Slider.updateCurrentValue();
         //here is where we will set the values back to default for the blocks
+      }
+      if(startSimButton.checkClick()) {
+        //here is where we put the code to start the simulation
       }
       //here is where we update which is the clicked button in the two-way button
       elasticButton.updateClickStatus();
