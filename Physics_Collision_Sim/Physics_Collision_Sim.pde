@@ -12,7 +12,7 @@ public static Screen currentScreen = Screen.WELCOME;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
-Button restartButton = new Button(1030, 730, 150, 50, "Start Over", Screen.SIMULATOR);
+Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
 
 //two way Buttons
 TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", false);
@@ -75,6 +75,7 @@ void simulator() {
   text(frictionSlider.currentValue, 1000, 350);
   text(initialVelocity1Slider.currentValue, 1000, 450);
   text(initialVelocity2Slider.currentValue, 1000, 550);
+  //Draw out the area for the blocks to move on
 
 }
 
@@ -109,8 +110,19 @@ void mouseClicked() {
     case SIMULATOR:
       //here is where we put the code for the buttons inside the simulator
       if(restartButton.checkClick()) {
-        currentScreen = restartButton.switchToScreen;
         //here is where we might want to reset the physics values to default
+        //set the elastic/inelastic back to default
+        elasticButton.isClicked = false;
+        inelasticButton.isClicked = true;
+        //sets the friction back to default
+        frictionSlider.x = frictionSlider.lineX;
+        frictionSlider.updateCurrentValue();
+        //sets the initial velocities back to default
+        initialVelocity1Slider.x = initialVelocity1Slider.lineX;
+        initialVelocity2Slider.x = initialVelocity2Slider.lineX;
+        initialVelocity1Slider.updateCurrentValue();
+        initialVelocity2Slider.updateCurrentValue();
+        //here is where we will set the values back to default for the blocks
       }
       //here is where we update which is the clicked button in the two-way button
       elasticButton.updateClickStatus();
