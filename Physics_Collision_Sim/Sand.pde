@@ -1,12 +1,10 @@
-import java.util.Random;
-
 class sandgrain{
-  Random r = new Random();
+//  Random r = new Random();
   float grainRadius;
   public void create (float grainRadius){
     fill(100, 100, 0);
     //x and y are placeholders for random numbers
-    ellipse(r.nextFloat, y, this.grainRadius, this.grainRadius);
+    ellipse(r.nextFloat, r.nextFloat, this.grainRadius, this.grainRadius);
   }
   public void update(){
 
