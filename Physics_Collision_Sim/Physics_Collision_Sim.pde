@@ -12,6 +12,9 @@
 public static final float g = 9.81F;
 //global variable that shows the current screen
 public static Screen currentScreen = Screen.WELCOME;
+//Global constants for x position of each block
+public static final float posX1 = 50;
+public static final float posX2 = 550;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
@@ -28,6 +31,10 @@ Slider initialVelocity1Slider = new Slider(862, 350, 0, 10);
 Slider initialVelocity2Slider = new Slider(862, 450, 0, -10);
 Slider mass1Slider = new Slider(862, 550, 0, 5);
 Slider mass2Slider = new Slider(862, 650, 0, 5);
+
+//blocks
+Block block1 = new Block(posX1, 400);
+Block block2 = new Block(posX2, 400);
 
 //Screen options
 public enum Screen {
@@ -173,6 +180,16 @@ void mouseClicked() {
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
+        
+        //set initial velocities
+        block1.setInitialVelocity(initialVelocity1Slider.currentValue);
+        block2.setInitialVelocity(initialVelocity2Slider.currentValue);
+        
+        //set initial masses
+        block1.setInitialMass(mass1Slider.currentValue);
+        block2.setInitialMass(mass2Slider.currentValue);
+        
+        
       }
       //here is where we update which is the clicked button in the two-way button
       elasticButton.updateClickStatus();
