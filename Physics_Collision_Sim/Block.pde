@@ -21,7 +21,16 @@ class Block {
     float friction = coefficientOfFriction * mass * g;
     this.accelerationByFriction = friction / mass;
     this.x += this.velocity;
-    this.velocity -= accelerationByFriction;
+    
+    //Determine which direction the friction should act
+    if(this.velocity > 0) {
+      this.velocity -= accelerationByFriction;
+    } else if(this.velocity < 0) {
+      this.velocity += accelerationByFriction;
+    } else {
+      return;
+    }
+    
     this.create();
   }
 
@@ -31,7 +40,7 @@ class Block {
   }
 
   //Give me the mass. Should only be used on the action of the start button
-  public void setInitialMass(float m) {
+  public void setMass(float m) {
     this.mass = m;
   }
 
