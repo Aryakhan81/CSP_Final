@@ -9,6 +9,12 @@ static class RandomGenerator {
     return r.nextFloat();
   }
   
+  //Random float generator (between 0 and any other specified float)
+  public static float randomFloat(float max) {
+    float unscaled = randomFloat();
+    return unscaled * max;
+  }
+  
   //Random integer generator (between min and max)
   public static int randomInt(int min, int max) {
     Random r = new Random();
