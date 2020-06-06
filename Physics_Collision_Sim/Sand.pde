@@ -1,11 +1,11 @@
 public void sand(){
-  if ((CoefficientOfFriction =< 0.33)(CoefficientOfFriction > 0)){
+  if ((coefficientOfFriction =< 0.33)(coefficientOfFriction > 0)){
 
   }
-    else if((CoefficientOfFriction > 0.33)(CoefficientOfFriction <= 0.66)){
+    else if((coefficientOfFriction > 0.33)(coefficientOfFriction <= 0.66)){
 
     }
-      else if((CoefficientOfFriction > 0.66)(CoefficientOfFriction <= 1)){
+      else if((coefficientOfFriction > 0.66)(coefficientOfFriction <= 1)){
 
       }
 }
