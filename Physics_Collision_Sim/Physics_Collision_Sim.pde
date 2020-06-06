@@ -19,15 +19,15 @@ Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
 Button startSimButton = new Button(400, 700, 150, 50, "Start!");
 
 //two way Buttons
-TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", false);
-TwoWayButton inelasticButton = new TwoWayButton(1002, 200, 150, 50, "inelastic", true);
+TwoWayButton elasticButton = new TwoWayButton(850, 100, 150, 50, "elastic", false);
+TwoWayButton inelasticButton = new TwoWayButton(1002, 100, 150, 50, "inelastic", true);
 
 //sliders
-Slider frictionSlider = new Slider(862, 350, 0, 1);
-Slider initialVelocity1Slider = new Slider(862, 450, 0, 10);
-Slider initialVelocity2Slider = new Slider(862, 550, 0, -10);
-Slider mass1Slider = new Slider(862, 650, 0, 5);
-Slider mass2Slider = new Slider(862, 750, 0, 5);
+Slider frictionSlider = new Slider(862, 250, 0, 1);
+Slider initialVelocity1Slider = new Slider(862, 350, 0, 10);
+Slider initialVelocity2Slider = new Slider(862, 450, 0, -10);
+Slider mass1Slider = new Slider(862, 550, 0, 5);
+Slider mass2Slider = new Slider(862, 650, 0, 5);
 
 //Screen options
 public enum Screen {
@@ -100,17 +100,23 @@ void simulator() {
   mass2Slider.create(0, 35);
   //creates the titles for the Sliders
   fill(0);
-  text("Coefficient of friction", 862, 335);
-  text("Initial velocity of block 1", 862, 435);
-  text("Initial velocity of block 2", 862, 535);
+  text("Coefficient of friction", 862, 235);
+  text("Initial velocity of block 1", 862, 335);
+  text("Initial velocity of block 2", 862, 435);
+  text("Mass of block 1 (kg)", 865, 535);
+  text("Mass of block 2 (kg)", 865, 635);
   //update the current value of the sliders
   frictionSlider.updateCurrentValue();
   initialVelocity1Slider.updateCurrentValue();
   initialVelocity2Slider.updateCurrentValue();
+  mass1Slider.updateCurrentValue();
+  mass2Slider.updateCurrentValue();
   //create a text area that displays the current value of each slider
-  text(frictionSlider.currentValue, 1000, 350);
-  text(initialVelocity1Slider.currentValue, 1000, 450);
-  text(initialVelocity2Slider.currentValue, 1000, 550);
+  text(frictionSlider.currentValue, 1000, 265);
+  text(initialVelocity1Slider.currentValue, 1000, 365);
+  text(initialVelocity2Slider.currentValue, 1000, 465);
+  text(mass1Slider.currentValue, 1000, 565);
+  text(mass2Slider.currentValue, 1000, 665);
   //Draw out the area for the blocks to move on
 
 }
@@ -158,6 +164,11 @@ void mouseClicked() {
         initialVelocity2Slider.x = initialVelocity2Slider.lineX;
         initialVelocity1Slider.updateCurrentValue();
         initialVelocity2Slider.updateCurrentValue();
+        //sets the masses back to default
+        mass1Slider.x = mass1Slider.lineX;
+        mass2Slider.x = mass2Slider.lineX;
+        mass1Slider.updateCurrentValue();
+        mass2Slider.updateCurrentValue();
         //here is where we will set the values back to default for the blocks
       }
       if(startSimButton.checkClick()) {
