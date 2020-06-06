@@ -4,8 +4,6 @@ class Block {
   float velocity, mass, x, y, width, height, momentum, friction, acceleration_by_friction, coefficient_of_friction;
 
   public Block(float x, float y) {
-    this.velocity = velocity;
-    this.mass = mass;
     this.x = x;
     this.y = y;
     this.width = this.height = 50;
@@ -13,7 +11,7 @@ class Block {
 
   //Create the image of the block
   public void create() {
-
+    
   }
 
   //Update the block's kinematic quantities
