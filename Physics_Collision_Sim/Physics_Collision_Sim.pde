@@ -3,7 +3,7 @@
 -----------
 -> Enumeration for the screen names - DONE
 -> Classes for Buttons, Sliders and Two-Way Buttons - DONE
--> Functions setting the screen upon each screen transition
+-> Functions setting the screen upon each screen transition - DONE
 -> setup(), draw() and mouseClicked()
 -> Functions for elastic and inelastic collisions
 **/
