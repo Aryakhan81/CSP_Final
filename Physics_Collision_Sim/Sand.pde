@@ -1,9 +1,9 @@
 class sandgrain{
 
-  float xScaled, yScaled, grainwidth, grainheight;
-  public void create(){
+  float xScaled, yScaled, grainradius;
+  public void create(float xScaled, float yScaled, float grainradius){
     fill(100, 100, 0);
-    elipse(this.xScaled, this.yScaled, this.grainwidth, this.grainheight);
+    elipse(this.xScaled, this.yScaled, this.grainradius, this.grainradius);
   }
   public void update(){
 
