@@ -14,7 +14,7 @@ public static Screen currentScreen = Screen.WELCOME;
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
 Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
-Button startSimButton = new Button(500, 700, 150, 50, "Start!");
+Button startSimButton = new Button(400, 700, 150, 50, "Start!");
 
 //two way Buttons
 TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", false);
@@ -34,16 +34,16 @@ public enum Screen {
   //maybe add graphs?
 }
 
-//Do elastic collision. Formula found from socratic.org by Cosmic Defect 
+//Do elastic collision. Formula found from socratic.org by Cosmic Defect
 void elasticCollision(Block block1, Block block2) {
   float initialVelocity1 = block1.velocity;
   float initialVelocity2 = block2.velocity;
   float mass1 = block1.mass;
   float mass2 = block2.mass;
-  
+
   float finalVelocity1 = ((mass1 - mass2)/(mass1 + mass2)) * initialVelocity1 + ((2 * mass2)/(mass1 + mass2)) * initialVelocity2;
   float finalVelocity2 = ((2 * mass1)/(mass1 + mass2)) * initialVelocity1 + ((mass2 - mass1)/(mass1 + mass2)) * initialVelocity2;
-  
+
   block1.velocity = finalVelocity1;
   block2.velocity = finalVelocity2;
 }
@@ -54,9 +54,9 @@ void inelasticCollision(Block block1, Block block2) {
   float initialVelocity2 = block2.velocity;
   float mass1 = block1.mass;
   float mass2 = block2.mass;
-  
+
   float finalVelocity = ((mass1 * initialVelocity1) + (mass2 * initialVelocity2))/(mass1 + mass2);
-  
+
   block1.velocity = block2.velocity = finalVelocity;
 }
 
