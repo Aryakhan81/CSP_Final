@@ -191,9 +191,9 @@ void mouseClicked() {
         block1.setInitialVelocity(initialVelocity1Slider.currentValue);
         block2.setInitialVelocity(initialVelocity2Slider.currentValue);
 
-        //set initial masses
-        block1.setInitialMass(mass1Slider.currentValue);
-        block2.setInitialMass(mass2Slider.currentValue);
+        //set masses
+        block1.setMass(mass1Slider.currentValue);
+        block2.setMass(mass2Slider.currentValue);
 
 
       }
