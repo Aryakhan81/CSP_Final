@@ -19,7 +19,7 @@ public static final float posX2 = 550;
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
 Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
-Button startSimButton = new Button(400, 700, 150, 50, "Start!");
+Button startSimButton = new Button(300, 600, 150, 50, "Start!");
 
 //two way Buttons
 TwoWayButton elasticButton = new TwoWayButton(850, 100, 150, 50, "elastic", false);
@@ -119,11 +119,11 @@ void simulator() {
   mass1Slider.updateCurrentValue();
   mass2Slider.updateCurrentValue();
   //create a text area that displays the current value of each slider
-  text(frictionSlider.currentValue, 1000, 265);
-  text(initialVelocity1Slider.currentValue, 1000, 365);
-  text(initialVelocity2Slider.currentValue, 1000, 465);
-  text(mass1Slider.currentValue, 1000, 565);
-  text(mass2Slider.currentValue, 1000, 665);
+  text(frictionSlider.currentValue, 1020, 265);
+  text(initialVelocity1Slider.currentValue, 1020, 365);
+  text(initialVelocity2Slider.currentValue, 1020, 465);
+  text(mass1Slider.currentValue, 1020, 565);
+  text(mass2Slider.currentValue, 1020, 665);
   //Draw out the area for the blocks to move on
   //table and floor
   fill(0);
