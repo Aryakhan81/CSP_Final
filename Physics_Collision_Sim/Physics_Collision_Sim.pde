@@ -20,12 +20,14 @@ Button startSimButton = new Button(400, 700, 150, 50, "Start!");
 
 //two way Buttons
 TwoWayButton elasticButton = new TwoWayButton(850, 200, 150, 50, "elastic", false);
-TwoWayButton inelasticButton = new TwoWayButton(1000, 200, 150, 50, "inelastic", true);
+TwoWayButton inelasticButton = new TwoWayButton(1002, 200, 150, 50, "inelastic", true);
 
 //sliders
 Slider frictionSlider = new Slider(862, 350, 0, 1);
 Slider initialVelocity1Slider = new Slider(862, 450, 0, 10);
 Slider initialVelocity2Slider = new Slider(862, 550, 0, -10);
+Slider mass1Slider = new Slider(862, 650, 0, 5);
+Slider mass2Slider = new Slider(862, 750, 0, 5);
 
 //Screen options
 public enum Screen {
@@ -94,6 +96,8 @@ void simulator() {
   frictionSlider.create(0, 35);
   initialVelocity1Slider.create(0, 35);
   initialVelocity2Slider.create(0, 35);
+  mass1Slider.create(0, 35);
+  mass2Slider.create(0, 35);
   //creates the titles for the Sliders
   fill(0);
   text("Coefficient of friction", 862, 335);
@@ -171,4 +175,6 @@ void mouseDragged() {
   frictionSlider.respondToDrag();
   initialVelocity1Slider.respondToDrag();
   initialVelocity2Slider.respondToDrag();
+  mass1Slider.respondToDrag();
+  mass2Slider.respondToDrag();
 }
