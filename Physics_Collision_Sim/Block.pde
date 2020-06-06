@@ -3,7 +3,7 @@ class Block {
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, x, y, width, height, momentum, friction, acceleration_by_friction;
 
-  public Block(float velocity, float mass, float x, float y) {
+  public Block(float x, float y) {
     this.velocity = velocity;
     this.mass = mass;
     this.x = x;
