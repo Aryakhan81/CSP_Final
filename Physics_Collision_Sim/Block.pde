@@ -21,7 +21,7 @@ class Block {
     float friction = coefficient_of_friction * mass * g;
     this.acceleration_by_friction = friction / mass;
     this.x += this.velocity;
-    this.velocity -= friction;
+    this.velocity -= acceleration_by_friction;
     this.create();
   }
 
