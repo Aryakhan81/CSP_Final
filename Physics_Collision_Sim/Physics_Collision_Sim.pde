@@ -125,7 +125,8 @@ void simulator() {
   text(mass1Slider.currentValue, 1000, 565);
   text(mass2Slider.currentValue, 1000, 665);
   //Draw out the area for the blocks to move on
-
+  fill(0);
+  rect(20, 300, 750, 10);
 }
 
 void settings() {
