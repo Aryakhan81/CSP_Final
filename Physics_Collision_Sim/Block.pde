@@ -1,9 +1,9 @@
 class Block {
   //here is where we should put the code for the block class, and all the data they contain
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
-  float velocity, mass, x, y, width, height, momentum, friction;
+  float velocity, mass, x, y, width, height, momentum, friction, acceleration_by_friction;
 
-  public Block(float velocity, float mass, float x, float y, float momentum, float friction) {
+  public Block(float velocity, float mass, float x, float y, float momentum, float friction, float acceleration_by_friction) {
     this.velocity = velocity;
     this.mass = mass;
     this.x = x;
@@ -11,6 +11,7 @@ class Block {
     this.width = this.height = 50;
     this.momentum = velocity * mass;
     this.friction = coefficient_of_friction * mass * g;
+    this.acceleration_by_friction = friction / mass;
   }
 
   //Create the image of the block
