@@ -31,7 +31,7 @@ class Block {
   }
 
   //Give me the mass. Should only be used on the action of the start button
-  public void setInitialMass(float m) {
+  public void setMass(float m) {
     this.mass = m;
   }
 
