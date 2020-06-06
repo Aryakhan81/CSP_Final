@@ -20,7 +20,7 @@ class Block {
     this.momentum = velocity * mass;
     this.friction = coefficient_of_friction * mass * g;
     this.acceleration_by_friction = friction / mass;
-    this.create
+    this.create();
   }
 
   //Check to see if they have collided
