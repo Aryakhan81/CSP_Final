@@ -17,7 +17,7 @@ class Block {
   }
 
   //Update the block's kinematic quantities
-  public void update(float momentum, float friction, float acceleration_by_friction) {
+  public void update() {
     //Will call this.create()
     this.momentum = velocity * mass;
     this.friction = coefficient_of_friction * mass * g;
