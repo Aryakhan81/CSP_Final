@@ -7,8 +7,9 @@ class sandgrain{
   }
   public void update(){
 
+    this.sandSize();
   }
-  public void sand(){
+  public void sandSize(){
     if ((coefficientOfFriction =< 0.33)(coefficientOfFriction > 0)){
 
     }
