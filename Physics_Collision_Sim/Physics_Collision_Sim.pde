@@ -8,6 +8,8 @@
 -> Functions for elastic and inelastic collisions
 **/
 
+//Global constant for gravity
+public static final float g = 9.81F;
 //global variable that shows the current screen
 public static Screen currentScreen = Screen.WELCOME;
 
