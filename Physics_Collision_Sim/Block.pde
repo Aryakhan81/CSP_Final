@@ -1,7 +1,7 @@
 class Block {
   //here is where we should put the code for the block class, and all the data they contain
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
-  float velocity, mass, x, y, width, height, momentum, friction, acceleration_by_friction, coefficient_of_friction;
+  float velocity, mass, x, y, width, height,acceleration_by_friction;
 
   public Block(float x, float y) {
     this.x = x;
@@ -24,6 +24,8 @@ class Block {
     this.velocity -= acceleration_by_friction;
     this.create();
   }
+  
+  //Give me the velocity of the 
 
   //Check to see if they have collided
   public boolean hasCollided(Block collideWith) {
