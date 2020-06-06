@@ -1,7 +1,7 @@
 class Block {
   //here is where we should put the code for the block class, and all the data they contain
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
-  float velocity, mass, x, y, width, height, accelerationByFriction, coefficientOfFriction;
+  float velocity, mass, x, y, width, height, accelerationByFriction;
 
   public Block(float x, float y) {
     this.x = x;
@@ -16,7 +16,7 @@ class Block {
   }
 
   //Update the block's kinematic quantities
-  public void update(float coefficient_of_friction) {
+  public void update(float coefficientOfFriction) {
     //Will call this.create()
     float friction = coefficientOfFriction * mass * g;
     this.accelerationByFriction = friction / mass;
