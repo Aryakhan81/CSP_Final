@@ -25,7 +25,15 @@ class Block {
     this.create();
   }
   
-  //Give me the velocity of the 
+  //Give me the velocity. Should only be used on the action of the start button
+  public void setInitialVelocity(float v) {
+    this.velocity = v;
+  }
+  
+  //Give me the mass. Should only be used on the action of the start button
+  public void setInitialMass(float m) {
+    this.mass = m;
+  }
 
   //Check to see if they have collided
   public boolean hasCollided(Block collideWith) {
