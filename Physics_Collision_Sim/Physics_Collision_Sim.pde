@@ -29,8 +29,8 @@ TwoWayButton inelasticButton = new TwoWayButton(1002, 100, 150, 50, "inelastic",
 Slider frictionSlider = new Slider(862, 250, 0, 1);
 Slider initialVelocity1Slider = new Slider(862, 350, 0, 10);
 Slider initialVelocity2Slider = new Slider(862, 450, 0, -10);
-Slider mass1Slider = new Slider(862, 550, 0, 5);
-Slider mass2Slider = new Slider(862, 650, 0, 5);
+Slider mass1Slider = new Slider(862, 550, 0.1, 5);
+Slider mass2Slider = new Slider(862, 650, 0.1, 5);
 
 //blocks
 Block block1 = new Block(posX1, 400);
@@ -177,19 +177,25 @@ void mouseClicked() {
         mass1Slider.updateCurrentValue();
         mass2Slider.updateCurrentValue();
         //here is where we will set the values back to default for the blocks
+        //Set the velocities of the blocks back to 0
+        block1.velocity = 0;
+        block2.velocity = 0;
+        //Set the positions of the blocks back to default
+        block1.x = posX1;
+        block2.x = posX2;
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
-        
+
         //set initial velocities
         block1.setInitialVelocity(initialVelocity1Slider.currentValue);
         block2.setInitialVelocity(initialVelocity2Slider.currentValue);
-        
-        //set initial masses
-        block1.setInitialMass(mass1Slider.currentValue);
-        block2.setInitialMass(mass2Slider.currentValue);
-        
-        
+
+        //set masses
+        block1.setMass(mass1Slider.currentValue);
+        block2.setMass(mass2Slider.currentValue);
+
+
       }
       //here is where we update which is the clicked button in the two-way button
       elasticButton.updateClickStatus();
