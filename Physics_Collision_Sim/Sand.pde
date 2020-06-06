@@ -1,9 +1,12 @@
-class sandgrain{
+import java.util.Random;
 
-  float xScaled, yScaled, grainradius;
-  public void create(float xScaled, float yScaled, float grainradius){
+class sandgrain{
+  Random r = new Random();
+  float grainRadius;
+  public void create (float grainRadius){
     fill(100, 100, 0);
-    elipse(this.xScaled, this.yScaled, this.grainradius, this.grainradius);
+    //x and y are placeholders for random numbers
+    ellipse(r.nextFloat, y, this.grainRadius, this.grainRadius);
   }
   public void update(){
 
@@ -11,13 +14,17 @@ class sandgrain{
   }
   public void sandSize(){
     if ((coefficientOfFriction =< 0.33)(coefficientOfFriction > 0)){
-
+      //clarity
+      this.grainRadius *= 1;
+      this.create();
     }
       else if((coefficientOfFriction > 0.33)(coefficientOfFriction <= 0.66)){
-
+        this.grainRadius *= 2;
+        this.create();
       }
         else if((coefficientOfFriction > 0.66)(coefficientOfFriction <= 1)){
-
+          this.grainRadius *= 3;
+          this.create();
         }
     }
 }
