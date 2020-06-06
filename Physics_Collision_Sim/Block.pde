@@ -11,7 +11,8 @@ class Block {
 
   //Create the image of the block
   public void create() {
-
+    fill(20, 20, 200);
+    rect(this.x, this.y, this.width, this.height);
   }
 
   //Update the block's kinematic quantities
