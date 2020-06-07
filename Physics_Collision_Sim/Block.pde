@@ -45,7 +45,7 @@ class Block {
   }
 
   //Check to see if they have collided
-  public boolean hasCollided(Block collideWith) {
+  public boolean hasCollidedWith(Block collideWith) {
     if(this.x < collideWith.x && this.x + this.width >= collideWith.x) {
       return true;
     } else if(this.x > collideWith.x && this.x <= collideWith.x + collideWith.width) {

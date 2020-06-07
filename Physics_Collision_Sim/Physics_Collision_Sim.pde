@@ -9,12 +9,12 @@
 **/
 
 //Global constant for gravity
-public static final float g = 9.81F;
+public static final float g = 0.0981F;
 //global variable that shows the current screen
 public static Screen currentScreen = Screen.WELCOME;
 //Global constants for x position of each block
-public static final float posX1 = 50;
-public static final float posX2 = 550;
+public static final float posX1 = 20;
+public static final float posX2 = 720;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
@@ -33,8 +33,8 @@ Slider mass1Slider = new Slider(862, 550, 0.1, 5);
 Slider mass2Slider = new Slider(862, 650, 0.1, 5);
 
 //blocks
-Block block1 = new Block(posX1, 400);
-Block block2 = new Block(posX2, 400);
+Block block1 = new Block(posX1, 300);
+Block block2 = new Block(posX2, 300);
 
 //Screen options
 public enum Screen {
@@ -132,6 +132,19 @@ void simulator() {
   rect(30, 350, 30, 200);
   rect(730, 350, 30, 200);
   rect(10, 550, 770, 1);
+  
+  //Update the blocks
+  block1.update(frictionSlider.currentValue);
+  block2.update(frictionSlider.currentValue);
+  
+  //Check for a collision and determine its type
+  if(block1.hasCollidedWith(block2) || block1.hasCollidedWith(block1)) {
+    if(elasticButton.isClicked) {
+      elasticCollision(block1, block2);
+    } else if(inelasticButton.isClicked) {
+      inelasticCollision(block1, block2);
+    }
+  }
 }
 
 void settings() {
@@ -189,9 +202,17 @@ void mouseClicked() {
         //Set the positions of the blocks back to default
         block1.x = posX1;
         block2.x = posX2;
+        
+        //Create them so we can see them
+        block1.create();
+        block2.create();
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
+        
+        //Set them back to their initial positions
+        block1.x = posX1;
+        block2.x = posX2;
 
         //set initial velocities
         block1.setInitialVelocity(initialVelocity1Slider.currentValue);
