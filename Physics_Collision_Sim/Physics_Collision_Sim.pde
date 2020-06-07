@@ -107,6 +107,7 @@ void simulator() {
   mass2Slider.create(0, 35);
   //creates the titles for the Sliders
   fill(0);
+  text("Collision type:", 925, 75);
   text("Coefficient of friction", 862, 235);
   text("Initial velocity of block 1", 862, 335);
   text("Initial velocity of block 2", 862, 435);
