@@ -14,12 +14,12 @@ class SandGrains{
   public void create (){
     for (int i = 0; i < 10; i++)  {
       fill(RandomGenerator.randomFloat(50) + 100,RandomGenerator.randomFloat(50) + 100, 0);
-      //x and y are placeholders for random numbers
+      //varying shades of yellow for a bunch of same size sand grains
       ellipse(RandomGenerator.randomFloat(5) + 20 + (i*70), 300 - RandomGenerator.randomFloat(30), this.grainRadius, this.grainRadius);
   }
   }
   public void update(){
-
+    this.setMu();
     this.grainSize();
   }
   public void grainSize(){
@@ -36,5 +36,5 @@ class SandGrains{
       grainRadius *= (3 * coefficientOfFriction);
       this.create();
     }
-    }
+  }        
 }
