@@ -8,9 +8,6 @@ class SandGrains{
     this.coefficientOfFriction = coefficientOfFriction;
   }
 
-  public void setGrainRadius() {
-    //Set grain radius based on this.coefficientOfFriction
-  }
   public void create (){
     for (int i = 0; i < 10; i++)  {
       fill(RandomGenerator.randomFloat(50) + 100,RandomGenerator.randomFloat(50) + 100, 0);
@@ -36,5 +33,5 @@ class SandGrains{
       grainRadius *= (3 * coefficientOfFriction);
       this.create();
     }
-  }        
+  }
 }
