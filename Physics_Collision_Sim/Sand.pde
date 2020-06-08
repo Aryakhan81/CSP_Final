@@ -11,8 +11,8 @@ class SandGrains{
     //Set grain radius based on this.coefficientOfFriction
   }
   public void create (){
-    for (int i = 0; i < 10; i + 1)  {
-      fill(RandomGenerator.randomFloat(50); + 100,RandomGenerator.randomFloat(50); + 100, 0);
+    for (int i = 0; i < 10; i++)  {
+      fill(RandomGenerator.randomFloat(50) + 100,RandomGenerator.randomFloat(50) + 100, 0);
       //x and y are placeholders for random numbers
       ellipse(RandomGenerator.randomFloat(5) + 20 + (i*70), 300 - RandomGenerator.randomFloat(30), this.grainRadius, this.grainRadius);
   }
