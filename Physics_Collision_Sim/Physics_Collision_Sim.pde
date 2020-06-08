@@ -152,6 +152,10 @@ void settings() {
   size(1200, 800);
 }
 
+void setup() {
+  frameRate(60);
+}
+
 void draw() {
   //Do something depending on which screen is active
   switch(currentScreen) {
