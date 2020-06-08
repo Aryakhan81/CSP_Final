@@ -1,8 +1,9 @@
 class SandGrains{
 //  Random r = new Random();
-  float grainRadius, coefficientOfFriction;
-  this.grainRadius = 10;
-  //Constructor
+  float grainRadius = 10;
+  float coefficientOfFriction;
+
+ 
   public void setMu(float coefficientOfFriction) {
     this.coefficientOfFriction = coefficientOfFriction;
   }
