@@ -24,15 +24,15 @@ class SandGrains{
   public void grainSize(){
     if (coefficientOfFriction <= 0.33 && coefficientOfFriction > 0){
       //clarity
-      this.grainRadius *= (1 * coefficientOfFriction);
+      grainRadius *= (1 * coefficientOfFriction);
       this.create();
     }
     else if(coefficientOfFriction > 0.33 && coefficientOfFriction <= 0.66){
-      this.grainRadius *= (2 * coefficientOfFriction);
+      grainRadius *= (2 * coefficientOfFriction);
       this.create();
     }
     else if(coefficientOfFriction > 0.66 && coefficientOfFriction <= 1){
-      this.grainRadius *= (3 * coefficientOfFriction);
+      grainRadius *= (3 * coefficientOfFriction);
       this.create();
     }
     }
