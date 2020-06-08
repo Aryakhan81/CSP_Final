@@ -2,6 +2,7 @@ class Block {
   //here is where we should put the code for the block class, and all the data they contain
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, x, y, width, height, accelerationByFriction;
+  float kineticEnergy, momentum;
 
   public Block(float x, float y) {
     this.x = x;
@@ -23,13 +24,17 @@ class Block {
     this.x += (1.6667 * this.velocity);
 
     //Determine which direction the friction should act
-    if(this.velocity > 0) {
+    if(this.velocity > 0.01) {
       this.velocity -= accelerationByFriction;
-    } else if(this.velocity < 0) {
+    } else if(this.velocity < 0.01) {
       this.velocity += accelerationByFriction;
     } else {
-      return;
+      this.velocity = 0;
     }
+    
+    //Set dynamics quantities
+    this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
+    this.momentum = this.mass * this.velocity;
 
     this.create();
   }
@@ -54,4 +59,6 @@ class Block {
       return false;
     }
   }
+  
+  
 }
