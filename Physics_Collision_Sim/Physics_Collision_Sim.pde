@@ -140,6 +140,8 @@ void simulator() {
   for(int i = 0; i < 10; i++) {
     line((30 + i*10), 300, (30 + i*10), 310);
   }
+  //label
+  text("1 meter", 20, 298);
 
   //Update the blocks
   block1.update(frictionSlider.currentValue);
@@ -153,19 +155,19 @@ void simulator() {
       inelasticCollision(block1, block2);
     }
   }
-  
+
   //Paste the current kinematic and dynamic values to the screen for block 1
   text("Block 1:", 200, 25);
   text("Velocity: " + Float.toString(block1.velocity), 200, 40);
   text("Momentum: " + Float.toString(block1.momentum), 200, 55);
   text("Kinetic Energy: " + Float.toString(block1.kineticEnergy), 200, 70);
-  
+
   //Paste the current kinematic and dynamic values to the screen for block 2
-  text("Block 2:", 400, 25);
-  text("Velocity: " + Float.toString(block2.velocity), 400, 40);
-  text("Momentum: " + Float.toString(block2.momentum), 400, 55);
-  text("Kinetic Energy: " + Float.toString(block2.kineticEnergy), 400, 70);
-  
+  text("Block 2:", 450, 25);
+  text("Velocity: " + Float.toString(block2.velocity), 450, 40);
+  text("Momentum: " + Float.toString(block2.momentum), 450, 55);
+  text("Kinetic Energy: " + Float.toString(block2.kineticEnergy), 450, 70);
+
 }
 
 void settings() {
