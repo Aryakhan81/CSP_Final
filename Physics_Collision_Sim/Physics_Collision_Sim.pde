@@ -136,6 +136,7 @@ void simulator() {
   //meterstick
   fill(219, 202, 11, 255);
   rect(20, 300, 100, 25);
+  //rulings on the meterstick
   fill(0);
   for(int i = 0; i < 10; i++) {
     line((30 + i*10), 300, (30 + i*10), 310);
@@ -154,6 +155,7 @@ void simulator() {
     }
   }
   
+  fill(0);
   //Paste the current kinematic and dynamic values to the screen for block 1
   text("Block 1:", 200, 25);
   text("Velocity: " + Float.toString(block1.velocity), 200, 40);
@@ -198,6 +200,7 @@ void mouseClicked() {
       if(startButton.checkClick()) {
         currentScreen = startButton.switchToScreen;
         //here is where we might want to reset the physics values to default
+
       }
       break;
     case SIMULATOR:
@@ -246,6 +249,10 @@ void mouseClicked() {
         //set masses
         block1.setMass(mass1Slider.currentValue);
         block2.setMass(mass2Slider.currentValue);
+        
+        //Tell the blocks to draw
+        block1.shouldDraw = true;
+        block2.shouldDraw = true;
 
 
       }

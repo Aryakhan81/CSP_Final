@@ -3,6 +3,7 @@ class Block {
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, x, y, width, height, accelerationByFriction;
   float kineticEnergy, momentum;
+  boolean shouldDraw = true;
 
   public Block(float x, float y) {
     this.x = x;
@@ -26,7 +27,7 @@ class Block {
     //Determine which direction the friction should act
     if(this.velocity > 0.01) {
       this.velocity -= accelerationByFriction;
-    } else if(this.velocity < 0.01) {
+    } else if(this.velocity < -0.01) {
       this.velocity += accelerationByFriction;
     } else {
       this.velocity = 0;
@@ -35,8 +36,11 @@ class Block {
     //Set dynamics quantities
     this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
     this.momentum = this.mass * this.velocity;
-
-    this.create();
+    
+    if(this.shouldDraw) {
+      this.create();
+    }
+    
   }
 
   //Give me the velocity. Should only be used on the action of the start button
@@ -57,6 +61,15 @@ class Block {
       return true;
     } else {
       return false;
+    }
+  }
+  
+  //Check to see if it has gone out of bounds
+  public void checkBounds() {
+    if(this.x > posX1 || this.x < posX2) {
+      this.shouldDraw = false;
+    } else {
+      return;
     }
   }
   
