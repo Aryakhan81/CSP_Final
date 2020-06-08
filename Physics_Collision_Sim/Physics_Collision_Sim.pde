@@ -133,6 +133,10 @@ void simulator() {
   rect(730, 350, 30, 200);
   rect(10, 550, 770, 1);
 
+  //meterstick
+  fill(219, 202, 11, 255);
+  rect(20, 300, 100, 25);
+
   //Update the blocks
   block1.update(frictionSlider.currentValue);
   block2.update(frictionSlider.currentValue);
