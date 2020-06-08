@@ -9,7 +9,7 @@
 **/
 
 //Global constant for gravity
-public static final float g = 0.0981F;
+public static final float g = 0.2725F;
 //global variable that shows the current screen
 public static Screen currentScreen = Screen.WELCOME;
 //Global constants for x position of each block
@@ -132,11 +132,11 @@ void simulator() {
   rect(30, 350, 30, 200);
   rect(730, 350, 30, 200);
   rect(10, 550, 770, 1);
-  
+
   //Update the blocks
   block1.update(frictionSlider.currentValue);
   block2.update(frictionSlider.currentValue);
-  
+
   //Check for a collision and determine its type
   if(block1.hasCollidedWith(block2) || block1.hasCollidedWith(block1)) {
     if(elasticButton.isClicked) {
@@ -206,14 +206,14 @@ void mouseClicked() {
         //Set the positions of the blocks back to default
         block1.x = posX1;
         block2.x = posX2;
-        
+
         //Create them so we can see them
         block1.create();
         block2.create();
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
-        
+
         //Set them back to their initial positions
         block1.x = posX1;
         block2.x = posX2;

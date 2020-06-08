@@ -20,8 +20,8 @@ class Block {
     //Will call this.create()
     float friction = coefficientOfFriction * mass * g;
     this.accelerationByFriction = friction / mass;
-    this.x += this.velocity;
-    
+    this.x += (1.6667 * this.velocity);
+
     //Determine which direction the friction should act
     if(this.velocity > 0) {
       this.velocity -= accelerationByFriction;
@@ -30,7 +30,7 @@ class Block {
     } else {
       return;
     }
-    
+
     this.create();
   }
 
