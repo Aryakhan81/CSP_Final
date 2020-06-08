@@ -145,6 +145,19 @@ void simulator() {
       inelasticCollision(block1, block2);
     }
   }
+  
+  //Paste the current kinematic and dynamic values to the screen for block 1
+  text("Block 1:", 200, 25);
+  text("Velocity: " + Float.toString(block1.velocity), 200, 40);
+  text("Momentum: " + Float.toString(block1.momentum), 200, 55);
+  text("Kinetic Energy: " + Float.toString(block1.kineticEnergy), 200, 70);
+  
+  //Paste the current kinematic and dynamic values to the screen for block 2
+  text("Block 2:", 400, 25);
+  text("Velocity: " + Float.toString(block2.velocity), 400, 40);
+  text("Momentum: " + Float.toString(block2.momentum), 400, 55);
+  text("Kinetic Energy: " + Float.toString(block2.kineticEnergy), 400, 70);
+  
 }
 
 void settings() {
