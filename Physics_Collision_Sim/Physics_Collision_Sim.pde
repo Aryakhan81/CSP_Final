@@ -18,6 +18,7 @@ public static final float posX2 = 720;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
+//Button dataButton = new Button(450, 600, 150, 50, "View Data", Screen.DATA);
 Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
 Button startSimButton = new Button(300, 600, 150, 50, "Start!");
 
@@ -40,6 +41,7 @@ Block block2 = new Block(posX2, 300);
 public enum Screen {
   //What screens do we want to have?
   WELCOME,
+  //DATA,
   SIMULATOR
   //do we want to have a data screen where the velocities etc are displayed after the collision?
   //maybe add graphs?
@@ -156,6 +158,10 @@ void simulator() {
       inelasticCollision(block1, block2);
     }
   }
+  //Show the data screen button if the blocks have stopped or left the screen
+  //if(block1.velocity == 0 || block2.velocity == 0 || block1.shouldDraw == false || block2.shouldDraw == false) {
+  //  dataButton.create(38, 31);
+  //}
 
   fill(0);
   //Paste the current kinematic and dynamic values to the screen for block 1
@@ -169,13 +175,16 @@ void simulator() {
   text("Velocity: " + Float.toString(block2.velocity) + " m/s", 450, 40);
   text("Momentum: " + Float.toString(block2.momentum) + " N*s", 450, 55);
   text("Kinetic Energy: " + Float.toString(block2.kineticEnergy) + " J", 450, 70);
-  
+
   //Check to see if the blocks are still on the table
   block1.checkBounds();
   block2.checkBounds();
 
 }
 
+//void data() {
+  //here is where the code for the data screen would go
+//}
 void settings() {
   //Decide on screen size here
   size(1200, 800);
@@ -194,6 +203,9 @@ void draw() {
     case SIMULATOR:
       simulator();
       break;
+    //case DATA:
+    //  data();
+    //  break;
   }
 }
 
@@ -262,6 +274,10 @@ void mouseClicked() {
 
 
       }
+      //here is where the switch to data screen code is located
+      //if(dataButton.checkClick()) {
+      //  currentScreen = dataButton.switchToScreen;
+      //}
       //here is where we update which is the clicked button in the two-way button
       elasticButton.updateClickStatus();
       inelasticButton.updateClickStatus();
