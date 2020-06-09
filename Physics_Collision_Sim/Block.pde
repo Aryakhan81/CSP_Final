@@ -66,7 +66,7 @@ class Block {
   
   //Check to see if it has gone out of bounds
   public void checkBounds() {
-    if(this.x > posX1 || this.x < posX2) {
+    if(this.x < posX1 - this.width/2 || this.x > posX2 + this.width/2) {
       this.shouldDraw = false;
     } else {
       return;

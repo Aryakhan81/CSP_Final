@@ -160,15 +160,19 @@ void simulator() {
   fill(0);
   //Paste the current kinematic and dynamic values to the screen for block 1
   text("Block 1:", 200, 25);
-  text("Velocity: " + Float.toString(block1.velocity), 200, 40);
-  text("Momentum: " + Float.toString(block1.momentum), 200, 55);
-  text("Kinetic Energy: " + Float.toString(block1.kineticEnergy), 200, 70);
+  text("Velocity: " + Float.toString(block1.velocity) + " m/s", 200, 40);
+  text("Momentum: " + Float.toString(block1.momentum) + " N*s", 200, 55);
+  text("Kinetic Energy: " + Float.toString(block1.kineticEnergy) + " J", 200, 70);
 
   //Paste the current kinematic and dynamic values to the screen for block 2
   text("Block 2:", 450, 25);
-  text("Velocity: " + Float.toString(block2.velocity), 450, 40);
-  text("Momentum: " + Float.toString(block2.momentum), 450, 55);
-  text("Kinetic Energy: " + Float.toString(block2.kineticEnergy), 450, 70);
+  text("Velocity: " + Float.toString(block2.velocity) + " m/s", 450, 40);
+  text("Momentum: " + Float.toString(block2.momentum) + " N*s", 450, 55);
+  text("Kinetic Energy: " + Float.toString(block2.kineticEnergy) + " J", 450, 70);
+  
+  //Check to see if the blocks are still on the table
+  block1.checkBounds();
+  block2.checkBounds();
 
 }
 
