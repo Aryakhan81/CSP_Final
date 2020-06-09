@@ -135,14 +135,14 @@ void simulator() {
 
   //meterstick
   fill(219, 202, 11, 255);
-  rect(20, 300, 100, 25);
+  rect(20, 230, 100, 25);
   //rulings on the meterstick
   fill(0);
   for(int i = 0; i < 10; i++) {
-    line((30 + i*10), 300, (30 + i*10), 310);
+    line((30 + i*10), 230, (30 + i*10), 240);
   }
   //label
-  text("1 meter", 20, 298);
+  text("1 meter", 20, 228);
 
   //Update the blocks
   block1.update(frictionSlider.currentValue);
