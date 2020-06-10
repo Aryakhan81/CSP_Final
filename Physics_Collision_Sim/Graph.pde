@@ -1,6 +1,18 @@
 import java.util.ArrayList;
 import java.lang.Math;
 
+/***
+DOCUMENTATION:
+-> Create in instance of the graph class using the constructor
+-> Call graph.addData(float newData) in the simulator() function 
+and pass in the value of interest
+-> In the start button click response, set graph.shouldCollectData = true
+Also call graph.resetData()
+-> In the start over button response, set graph.shouldCollectData = false
+Also call graph.resetData()
+-> In the data() function, call graph.create()
+***/
+
 class Graph {
   ArrayList<Float> data = new ArrayList<Float>();
   float x, y, width, height;
