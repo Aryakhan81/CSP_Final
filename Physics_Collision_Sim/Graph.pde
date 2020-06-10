@@ -6,7 +6,7 @@ class Graph {
   float x, y, width, height;
   boolean shouldCollectData = false;
   String title;
-  Float maxX, maxY;
+  float maxX, maxY;
   
   //Cosntructor
   public Graph(float x, float y, float width, float height, String title) {
@@ -85,18 +85,18 @@ class Graph {
     if(this.findMin() > 0) {
       
       //Set the maxX and maxY values
-      this.maxX = this.findMax() + 10;
-      this.maxY = (float)(this.data.size())/60 + 1;
+      this.maxX = (float)(this.data.size()/60) + 1;
+      this.maxY = 10 * ceil(this.findMax()/10) + 10;
       
       //Graph Axes
       line(this.x, this.y - this.height, this.x, this.y);
       line(this.x, this.y, this.x + this.width, this.y);
       
       //Graph Text
-      text(Integer.toString((int)(double)maxX), this.x - 25, this.y - this.height + 10);
+      text(Integer.toString((int)maxY), this.x - 25, this.y - this.height + 10);
       text("0", this.x - 15, this.y);
       text("0", this.x, this.y + 18);
-      text(Integer.toString((int)(double)maxY), this.x + this.width - 5, this.y + 18);
+      text(Integer.toString((int)maxX), this.x + this.width - 5, this.y + 18);
       text(this.title, this.x + this.width/5, this.y - this.height - 5);
       
     } else if(this.findMax() < 0) {
@@ -111,14 +111,14 @@ class Graph {
     this.drawOutline();
     
     //Scale the axes
-    float scaledX = this.width/this.maxX;
+    float scaledX = this.width/(this.maxX * 60);
     float scaledY = this.height/this.maxY;
     
     for(int i = 0; i < this.data.size(); i++) {
       fill(0);
       float xcoord = i * scaledX;
       float ycoord = this.data.get(i) * scaledY;
-      point(this.x + xcoord, this.y - ycoord);
+      circle(this.x + xcoord, this.y - ycoord, 4);
     }
   }
 } 
