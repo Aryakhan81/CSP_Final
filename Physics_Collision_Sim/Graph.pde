@@ -1,20 +1,27 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.lang.Math;
 
 class Graph {
   ArrayList<Float> data = new ArrayList<Float>();
   float x, y, width, height;
+  boolean shouldCollectData = false;
+  String title;
+  Float maxX, maxY;
   
   //Cosntructor
-  public Graph(float x, float y, float width, float height) {
+  public Graph(float x, float y, float width, float height, String title) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
+    this.title = title;
   }
   
   //Add data to the data list
   void addData(float newData) {
-    this.data.add(newData);
+    if(this.shouldCollectData) {
+      this.data.add(newData);
+    }
   }
   
   //Reset the data
@@ -25,14 +32,23 @@ class Graph {
   //Find the max value in the array. For use only in this class
   private float findMax() {
     float currentValue;
-    float maxValue = 0;
-    for(int i = 0; i < this.data.size(); i++) {
+    float maxValue;
+    
+    //Will we ba able to find the max value without it throwing an error?
+    try {
+      maxValue = this.data.get(0);
+      for(int i = 0; i < this.data.size(); i++) {
       currentValue = this.data.get(i);
       
-      //See if the current value is greater than the previous max value
-      if(currentValue > maxValue) {
-        maxValue = currentValue;
+        //See if the current value is less than the previous min value
+        if(currentValue < maxValue) {
+          maxValue = currentValue;
+        }
       }
+    } catch(Exception e) {
+      //Go back to the simulator because there are no collected data
+      currentScreen = Screen.SIMULATOR;
+      maxValue = 0;
     }
     return maxValue;
   }
@@ -40,14 +56,23 @@ class Graph {
   //Find the min value in the array. For use only in this class
   private float findMin() {
     float currentValue;
-    float minValue = 0;
-    for(int i = 0; i < this.data.size(); i++) {
+    float minValue;
+    
+    //Will we ba able to find the min value without it throwing an error?
+    try {
+      minValue = this.data.get(0);
+      for(int i = 0; i < this.data.size(); i++) {
       currentValue = this.data.get(i);
       
-      //See if the current value is greater than the previous max value
-      if(currentValue < minValue) {
-        minValue = currentValue;
+        //See if the current value is less than the previous min value
+        if(currentValue < minValue) {
+          minValue = currentValue;
+        }
       }
+    } catch(Exception e) {
+      //Go back to the simulator because there are no collected data
+      currentScreen = Screen.SIMULATOR;
+      minValue = 0;
     }
     return minValue;
   }
@@ -58,11 +83,42 @@ class Graph {
     
     //See if we should draw a negative y part as well
     if(this.findMin() > 0) {
-      line(
+      
+      //Set the maxX and maxY values
+      this.maxX = this.findMax() + 10;
+      this.maxY = (float)(this.data.size())/60 + 1;
+      
+      //Graph Axes
+      line(this.x, this.y - this.height, this.x, this.y);
+      line(this.x, this.y, this.x + this.width, this.y);
+      
+      //Graph Text
+      text(Integer.toString((int)(double)maxX), this.x - 25, this.y - this.height + 10);
+      text("0", this.x - 15, this.y);
+      text("0", this.x, this.y + 18);
+      text(Integer.toString((int)(double)maxY), this.x + this.width - 5, this.y + 18);
+      text(this.title, this.x + this.width/5, this.y - this.height - 5);
+      
     } else if(this.findMax() < 0) {
       
     } else {
       
+    }
+  }
+  
+  void create() {
+    //Draw the outline
+    this.drawOutline();
+    
+    //Scale the axes
+    float scaledX = this.width/this.maxX;
+    float scaledY = this.height/this.maxY;
+    
+    for(int i = 0; i < this.data.size(); i++) {
+      fill(0);
+      float xcoord = i * scaledX;
+      float ycoord = this.data.get(i) * scaledY;
+      point(this.x + xcoord, this.y - ycoord);
     }
   }
 } 

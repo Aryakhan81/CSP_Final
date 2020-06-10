@@ -18,7 +18,7 @@ public static final float posX2 = 720;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
-//Button dataButton = new Button(450, 600, 150, 50, "View Data", Screen.DATA);
+Button dataButton = new Button(450, 600, 150, 50, "View Data", Screen.DATA);
 Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
 Button startSimButton = new Button(300, 600, 150, 50, "Start!");
 
@@ -37,12 +37,16 @@ Slider mass2Slider = new Slider(862, 650, 0.1, 5);
 Block block1 = new Block(posX1, 300);
 Block block2 = new Block(posX2, 300);
 
+//Graphs
+Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
+
+
 //Screen options
 public enum Screen {
   //What screens do we want to have?
   WELCOME,
-  //DATA,
-  SIMULATOR
+  SIMULATOR,
+  DATA
   //do we want to have a data screen where the velocities etc are displayed after the collision?
   //maybe add graphs?
 }
@@ -95,6 +99,7 @@ void simulator() {
   //create the start and restart buttons
   restartButton.create(38, 31);
   startSimButton.create(58, 31);
+  dataButton.create(38, 31);
   //this is where the design for the simulator screen should go
   //creates the two-way buttons and assigns them as partners
   elasticButton.create(53, 31);
@@ -179,12 +184,18 @@ void simulator() {
   //Check to see if the blocks are still on the table
   block1.checkBounds();
   block2.checkBounds();
+  
+  graph1.addData(frameRate);
 
 }
 
-//void data() {
+void data() {
+  background(200);
   //here is where the code for the data screen would go
-//}
+  graph1.create();
+  
+}
+
 void settings() {
   //Decide on screen size here
   size(1200, 800);
@@ -203,9 +214,9 @@ void draw() {
     case SIMULATOR:
       simulator();
       break;
-    //case DATA:
-    //  data();
-    //  break;
+    case DATA:
+      data();
+      break;
   }
 }
 
@@ -271,17 +282,26 @@ void mouseClicked() {
         //Tell the blocks to draw
         block1.shouldDraw = true;
         block2.shouldDraw = true;
+        
+        //Reset the graphs
+        graph1.resetData();
+        graph1.shouldCollectData = true;
 
 
       }
       //here is where the switch to data screen code is located
-      //if(dataButton.checkClick()) {
-      //  currentScreen = dataButton.switchToScreen;
-      //}
+      if(dataButton.checkClick()) {
+        currentScreen = dataButton.switchToScreen;
+      }
       //here is where we update which is the clicked button in the two-way button
       elasticButton.updateClickStatus();
       inelasticButton.updateClickStatus();
       break;
+      case DATA:
+        //do stuff on data screen
+
+        break;      
+      
   }
 }
 
