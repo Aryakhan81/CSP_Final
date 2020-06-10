@@ -4,8 +4,8 @@
 -> Enumeration for the screen names - DONE
 -> Classes for Buttons, Sliders and Two-Way Buttons - DONE
 -> Functions setting the screen upon each screen transition - DONE
--> setup(), draw() and mouseClicked()
--> Functions for elastic and inelastic collisions
+-> setup(), draw() and mouseClicked() - DONE
+-> Functions for elastic and inelastic collisions - DONE
 **/
 
 //Global constant for gravity
@@ -261,8 +261,8 @@ void mouseClicked() {
         block2.x = posX2;
 
         //Create them so we can see them
-        block1.create();
-        block2.create();
+        block1.shouldDraw = true;
+        block2.shouldDraw = true;
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
