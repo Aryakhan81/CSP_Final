@@ -253,8 +253,8 @@ void mouseClicked() {
         block2.x = posX2;
 
         //Create them so we can see them
-        block1.create();
-        block2.create();
+        block1.shouldDraw = true;
+        block2.shouldDraw = true;
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
@@ -314,8 +314,8 @@ void mouseClicked() {
         block2.x = posX2;
 
         //Create them so we can see them
-        block1.create();
-        block2.create();
+        block1.shouldDraw = true;
+        block2.shouldDraw = true;
       }
   }
 }
