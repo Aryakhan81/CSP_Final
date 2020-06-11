@@ -18,7 +18,7 @@ public static final float posX2 = 720;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
-//Button dataButton = new Button(450, 600, 150, 50, "View Data", Screen.DATA);
+Button dataButton = new Button(450, 600, 150, 50, "View Data", Screen.DATA);
 Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
 Button startSimButton = new Button(300, 600, 150, 50, "Start!");
 
@@ -41,7 +41,7 @@ Block block2 = new Block(posX2, 300);
 public enum Screen {
   //What screens do we want to have?
   WELCOME,
-  //DATA,
+  DATA,
   SIMULATOR
   //do we want to have a data screen where the velocities etc are displayed after the collision?
   //maybe add graphs?
