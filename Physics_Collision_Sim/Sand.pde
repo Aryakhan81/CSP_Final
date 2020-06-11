@@ -15,8 +15,8 @@ class SandGrains{
       ellipse(RandomGenerator.randomFloat(5) + 20 + (i*70), 300 - RandomGenerator.randomFloat(30), this.grainRadius, this.grainRadius);
   }
   }
-  public void update(){
-    this.setMu();
+  public void update(float coefficientOfFriction){
+    this.coefficientOfFriction = coefficientOfFriction;
     this.grainSize();
   }
   public void grainSize(){
