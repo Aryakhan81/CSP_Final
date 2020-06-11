@@ -184,6 +184,9 @@ void simulator() {
 
 void data() {
   //here is where the code for the data screen would go
+  background(200);
+  //create the restart button
+  restartButton.create(38, 31);
 }
 void settings() {
   //Decide on screen size here
@@ -282,6 +285,38 @@ void mouseClicked() {
       elasticButton.updateClickStatus();
       inelasticButton.updateClickStatus();
       break;
+    case DATA:
+      //here is where we put the code for the buttons in the DATA screen
+      if(restartButton.checkClick()) {
+        currentScreen = Screen.SIMULATOR;
+        //set the elastic/inelastic back to default
+        elasticButton.isClicked = false;
+        inelasticButton.isClicked = true;
+        //sets the friction back to default
+        frictionSlider.x = frictionSlider.lineX;
+        frictionSlider.updateCurrentValue();
+        //sets the initial velocities back to default
+        initialVelocity1Slider.x = initialVelocity1Slider.lineX;
+        initialVelocity2Slider.x = initialVelocity2Slider.lineX;
+        initialVelocity1Slider.updateCurrentValue();
+        initialVelocity2Slider.updateCurrentValue();
+        //sets the masses back to default
+        mass1Slider.x = mass1Slider.lineX;
+        mass2Slider.x = mass2Slider.lineX;
+        mass1Slider.updateCurrentValue();
+        mass2Slider.updateCurrentValue();
+        //here is where we will set the values back to default for the blocks
+        //Set the velocities of the blocks back to 0
+        block1.velocity = 0;
+        block2.velocity = 0;
+        //Set the positions of the blocks back to default
+        block1.x = posX1;
+        block2.x = posX2;
+
+        //Create them so we can see them
+        block1.create();
+        block2.create();
+      }
   }
 }
 
