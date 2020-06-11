@@ -158,10 +158,10 @@ void simulator() {
       inelasticCollision(block1, block2);
     }
   }
-  //Show the data screen button if the blocks have stopped or left the screen
-  //if(block1.velocity == 0 || block2.velocity == 0 || block1.shouldDraw == false || block2.shouldDraw == false) {
-  //  dataButton.create(38, 31);
-  //}
+  Show the data screen button if the blocks have stopped or left the screen
+  if(block1.velocity < 0.001 || block2.velocity < 0.001 || block1.shouldDraw == false || block2.shouldDraw == false) {
+    dataButton.create(38, 31);
+  }
 
   fill(0);
   //Paste the current kinematic and dynamic values to the screen for block 1
@@ -182,9 +182,9 @@ void simulator() {
 
 }
 
-//void data() {
+void data() {
   //here is where the code for the data screen would go
-//}
+}
 void settings() {
   //Decide on screen size here
   size(1200, 800);
@@ -203,9 +203,9 @@ void draw() {
     case SIMULATOR:
       simulator();
       break;
-    //case DATA:
-    //  data();
-    //  break;
+    case DATA:
+      data();
+      break;
   }
 }
 
@@ -275,9 +275,9 @@ void mouseClicked() {
 
       }
       //here is where the switch to data screen code is located
-      //if(dataButton.checkClick()) {
-      //  currentScreen = dataButton.switchToScreen;
-      //}
+      if(dataButton.checkClick()) {
+        currentScreen = dataButton.switchToScreen;
+      }
       //here is where we update which is the clicked button in the two-way button
       elasticButton.updateClickStatus();
       inelasticButton.updateClickStatus();
