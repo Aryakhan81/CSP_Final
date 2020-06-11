@@ -16,7 +16,7 @@ class SandGrains{
   }
   }
   public void update(float coefficientOfFriction){
-    this.coefficientOfFriction = coefficientOfFriction;
+    setMu(frictionSlider.currentValue);
     this.grainSize();
   }
   public void grainSize(){
