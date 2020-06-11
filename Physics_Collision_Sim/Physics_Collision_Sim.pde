@@ -36,6 +36,8 @@ Slider mass2Slider = new Slider(862, 650, 0.1, 5);
 Block block1 = new Block(posX1, 300);
 Block block2 = new Block(posX2, 300);
 
+//SandGrains
+sandGrains tableSand = new sandGrains();
 //Screen options
 public enum Screen {
   //What screens do we want to have?
@@ -132,11 +134,13 @@ void simulator() {
   rect(30, 350, 30, 200);
   rect(730, 350, 30, 200);
   rect(10, 550, 770, 1);
-  
+  //SandGrains
+  tableSand.setMu(frictionSlider.currentValue);
+  tableSand.update();
   //Update the blocks
   block1.update(frictionSlider.currentValue);
   block2.update(frictionSlider.currentValue);
-  
+
   //Check for a collision and determine its type
   if(block1.hasCollidedWith(block2) || block1.hasCollidedWith(block1)) {
     if(elasticButton.isClicked) {
@@ -202,14 +206,14 @@ void mouseClicked() {
         //Set the positions of the blocks back to default
         block1.x = posX1;
         block2.x = posX2;
-        
+
         //Create them so we can see them
         block1.create();
         block2.create();
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
-        
+
         //Set them back to their initial positions
         block1.x = posX1;
         block2.x = posX2;
