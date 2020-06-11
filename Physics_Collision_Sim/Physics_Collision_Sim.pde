@@ -158,7 +158,7 @@ void simulator() {
       inelasticCollision(block1, block2);
     }
   }
-  Show the data screen button if the blocks have stopped or left the screen
+  //Show the data screen button if the blocks have stopped or left the screen
   if(block1.velocity < 0.001 || block2.velocity < 0.001 || block1.shouldDraw == false || block2.shouldDraw == false) {
     dataButton.create(38, 31);
   }
