@@ -169,7 +169,7 @@ class Graph {
       } else if(this.findMax() < 0) {
         circle(this.x + xcoord, this.y - (this.height - ycoord), 4);
       } else {
-        circle(this.x + xcoord, this.y - (this.height - ycoord), 4);
+        circle(this.x + xcoord, this.y - (this.height/2 - ycoord/2), 4);
       }
       
     }
