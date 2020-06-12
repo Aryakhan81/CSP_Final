@@ -17,7 +17,7 @@ class sandGrains{
     //  fill(RandomGenerator.randomFloat(50) + 120,RandomGenerator.randomFloat(50) + 100, 0);
     fill(randNumber + 180, randNumber + 162, randNumber + 112);//tan
       //varying shades of yellow for a bunch of same size sand grains
-      ellipse(randNumber + 25 + (i*15), 350 - randNumber + .4*grainRadius, 1.5*grainRadius, grainRadius);
+      ellipse(randNumber + 25 + (i*15), 350 + .3*grainRadius, 1.5*grainRadius, grainRadius);
   }
   stroke(1);
   }

@@ -2,6 +2,8 @@ class Block {
   //here is where we should put the code for the block class, and all the data they contain
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, x, y, width, height, accelerationByFriction;
+  float kineticEnergy, momentum;
+  boolean shouldDraw = true;
 
   public Block(float x, float y) {
     this.x = x;
@@ -20,18 +22,25 @@ class Block {
     //Will call this.create()
     float friction = coefficientOfFriction * mass * g;
     this.accelerationByFriction = friction / mass;
-    this.x += this.velocity;
-    
+    this.x += (1.6667 * this.velocity);
+
     //Determine which direction the friction should act
-    if(this.velocity > 0) {
+    if(this.velocity > 0.01) {
       this.velocity -= accelerationByFriction;
-    } else if(this.velocity < 0) {
+    } else if(this.velocity < -0.01) {
       this.velocity += accelerationByFriction;
     } else {
-      return;
+      this.velocity = 0;
     }
-    
-    this.create();
+
+    //Set dynamics quantities
+    this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
+    this.momentum = this.mass * this.velocity;
+
+    if(this.shouldDraw) {
+      this.create();
+    }
+
   }
 
   //Give me the velocity. Should only be used on the action of the start button
@@ -54,4 +63,15 @@ class Block {
       return false;
     }
   }
+
+  //Check to see if it has gone out of bounds
+  public void checkBounds() {
+    if(this.x < posX1 - this.width/2 || this.x > posX2 + this.width/2) {
+      this.shouldDraw = false;
+    } else {
+      return;
+    }
+  }
+
+
 }

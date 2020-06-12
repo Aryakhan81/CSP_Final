@@ -9,7 +9,7 @@
 **/
 
 //Global constant for gravity
-public static final float g = 0.0981F;
+public static final float g = 0.2725F;
 //global variable that shows the current screen
 public static Screen currentScreen = Screen.WELCOME;
 //Global constants for x position of each block
@@ -18,6 +18,7 @@ public static final float posX2 = 720;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
+Button dataButton = new Button(450, 600, 150, 50, "View Data", Screen.DATA);
 Button restartButton = new Button(1030, 730, 150, 50, "Start Over");
 Button startSimButton = new Button(300, 600, 150, 50, "Start!");
 
@@ -36,12 +37,13 @@ Slider mass2Slider = new Slider(862, 650, 0.1, 5);
 Block block1 = new Block(posX1, 300);
 Block block2 = new Block(posX2, 300);
 
-//SandGrains
+//sandGrains
 sandGrains tableSand = new sandGrains();
 //Screen options
 public enum Screen {
   //What screens do we want to have?
   WELCOME,
+  DATA,
   SIMULATOR
   //do we want to have a data screen where the velocities etc are displayed after the collision?
   //maybe add graphs?
@@ -134,12 +136,24 @@ void simulator() {
   rect(30, 350, 30, 200);
   rect(730, 350, 30, 200);
   rect(10, 550, 770, 1);
-  //SandGrains
-  tableSand.setMu(frictionSlider.currentValue);
-  tableSand.update();
+
+  //meterstick
+  fill(219, 202, 11, 255);
+  rect(20, 230, 100, 25);
+  //rulings on the meterstick
+  fill(0);
+  for(int i = 0; i < 10; i++) {
+    line((30 + i*10), 230, (30 + i*10), 240);
+  }
+  //label
+  text("1 meter", 20, 228);
+
   //Update the blocks
   block1.update(frictionSlider.currentValue);
   block2.update(frictionSlider.currentValue);
+  //SandGrains
+  tableSand.setMu(frictionSlider.currentValue);
+  tableSand.update();
 
   //Check for a collision and determine its type
   if(block1.hasCollidedWith(block2) || block1.hasCollidedWith(block1)) {
@@ -149,11 +163,43 @@ void simulator() {
       inelasticCollision(block1, block2);
     }
   }
+  //Show the data screen button if the blocks have stopped or left the screen
+  if(block1.velocity < 0.001 || block2.velocity < 0.001 || block1.shouldDraw == false || block2.shouldDraw == false) {
+    dataButton.create(38, 31);
+  }
+
+  fill(0);
+  //Paste the current kinematic and dynamic values to the screen for block 1
+  text("Block 1:", 200, 25);
+  text("Velocity: " + Float.toString(block1.velocity) + " m/s", 200, 40);
+  text("Momentum: " + Float.toString(block1.momentum) + " N*s", 200, 55);
+  text("Kinetic Energy: " + Float.toString(block1.kineticEnergy) + " J", 200, 70);
+
+  //Paste the current kinematic and dynamic values to the screen for block 2
+  text("Block 2:", 450, 25);
+  text("Velocity: " + Float.toString(block2.velocity) + " m/s", 450, 40);
+  text("Momentum: " + Float.toString(block2.momentum) + " N*s", 450, 55);
+  text("Kinetic Energy: " + Float.toString(block2.kineticEnergy) + " J", 450, 70);
+
+  //Check to see if the blocks are still on the table
+  block1.checkBounds();
+  block2.checkBounds();
+
 }
 
+void data() {
+  //here is where the code for the data screen would go
+  background(200);
+  //create the restart button
+  restartButton.create(38, 31);
+}
 void settings() {
   //Decide on screen size here
   size(1200, 800);
+}
+
+void setup() {
+  frameRate(60);
 }
 
 void draw() {
@@ -164,6 +210,9 @@ void draw() {
       break;
     case SIMULATOR:
       simulator();
+      break;
+    case DATA:
+      data();
       break;
   }
 }
@@ -177,6 +226,7 @@ void mouseClicked() {
       if(startButton.checkClick()) {
         currentScreen = startButton.switchToScreen;
         //here is where we might want to reset the physics values to default
+
       }
       break;
     case SIMULATOR:
@@ -208,8 +258,8 @@ void mouseClicked() {
         block2.x = posX2;
 
         //Create them so we can see them
-        block1.create();
-        block2.create();
+        block1.shouldDraw = true;
+        block2.shouldDraw = true;
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
@@ -226,12 +276,52 @@ void mouseClicked() {
         block1.setMass(mass1Slider.currentValue);
         block2.setMass(mass2Slider.currentValue);
 
+        //Tell the blocks to draw
+        block1.shouldDraw = true;
+        block2.shouldDraw = true;
 
+
+      }
+      //here is where the switch to data screen code is located
+      if(dataButton.checkClick()) {
+        currentScreen = dataButton.switchToScreen;
       }
       //here is where we update which is the clicked button in the two-way button
       elasticButton.updateClickStatus();
       inelasticButton.updateClickStatus();
       break;
+    case DATA:
+      //here is where we put the code for the buttons in the DATA screen
+      if(restartButton.checkClick()) {
+        currentScreen = Screen.SIMULATOR;
+        //set the elastic/inelastic back to default
+        elasticButton.isClicked = false;
+        inelasticButton.isClicked = true;
+        //sets the friction back to default
+        frictionSlider.x = frictionSlider.lineX;
+        frictionSlider.updateCurrentValue();
+        //sets the initial velocities back to default
+        initialVelocity1Slider.x = initialVelocity1Slider.lineX;
+        initialVelocity2Slider.x = initialVelocity2Slider.lineX;
+        initialVelocity1Slider.updateCurrentValue();
+        initialVelocity2Slider.updateCurrentValue();
+        //sets the masses back to default
+        mass1Slider.x = mass1Slider.lineX;
+        mass2Slider.x = mass2Slider.lineX;
+        mass1Slider.updateCurrentValue();
+        mass2Slider.updateCurrentValue();
+        //here is where we will set the values back to default for the blocks
+        //Set the velocities of the blocks back to 0
+        block1.velocity = 0;
+        block2.velocity = 0;
+        //Set the positions of the blocks back to default
+        block1.x = posX1;
+        block2.x = posX2;
+
+        //Create them so we can see them
+        block1.shouldDraw = true;
+        block2.shouldDraw = true;
+      }
   }
 }
 
