@@ -53,7 +53,7 @@ class Graph {
       currentValue = this.data.get(i);
       
         //See if the current value is less than the previous min value
-        if(currentValue < maxValue) {
+        if(currentValue > maxValue) {
           maxValue = currentValue;
         }
       }
@@ -81,7 +81,7 @@ class Graph {
           minValue = currentValue;
         }
       }
-    } catch(Exception e) {
+    } catch(IndexOutOfBoundsException e) {
       //Go back to the simulator because there are no collected data
       currentScreen = Screen.SIMULATOR;
       minValue = 0;
@@ -94,7 +94,7 @@ class Graph {
   //Draw the outline of the graph. Private method; will only be used in this class
   private void drawOutline() {
     fill(0);
-    
+    System.out.println(this.title + ": " + this.findMax()); 
     //See if we should draw a negative y part as well
     if(this.findMin() > 0) {
       
@@ -129,7 +129,23 @@ class Graph {
       text("0", this.x, this.y - this.height - 5);
       text(Integer.toString((int)maxX), this.x + this.width - 5, this.y - this.height - 5);
       text(this.title, this.x + this.width/5, this.y - this.height - 35);
+      
     } else {
+      
+      //Set the maxX and maxY values
+      this.maxX = (float)(this.data.size()/60) + 1;
+      this.maxY = Math.max(abs(10 * ceil(this.findMin()/10) - 10), abs(10 * ceil(this.findMax()/10) + 10));
+      
+      //Graph Axes
+      line(this.x, this.y - this.height, this.x, this.y);
+      line(this.x, this.y - this.height/2, this.x + this.width, this.y - this.height/2);
+      
+      //Graph Text
+      text(Integer.toString((int)(-1 * maxY)), this.x - 35, this.y);
+      text(Integer.toString((int)(maxY)), this.x - 25, this.y - this.height + 18);
+      text("0", this.x - 15, this.y - this.height/2 + 6);
+      text(Integer.toString((int)maxX), this.x + this.width - 5, this.y - this.height/2 + 18);
+      text(this.title, this.x + this.width/5, this.y - this.height - 5);
       
     }
   }
@@ -147,11 +163,12 @@ class Graph {
       float xcoord = i * scaledX;
       float ycoord = this.data.get(i) * scaledY;
       
-      System.out.println(ycoord);
-      
+      //See where we should draw the data points
       if(this.findMin() > 0) {
         circle(this.x + xcoord, this.y - ycoord, 4);
       } else if(this.findMax() < 0) {
+        circle(this.x + xcoord, this.y - (this.height - ycoord), 4);
+      } else {
         circle(this.x + xcoord, this.y - (this.height - ycoord), 4);
       }
       

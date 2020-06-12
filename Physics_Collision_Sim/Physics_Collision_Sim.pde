@@ -40,6 +40,7 @@ Block block2 = new Block(posX2, 300);
 //Graphs
 Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
 Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
+Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
 
 
 //Screen options
@@ -188,6 +189,7 @@ void simulator() {
   
   graph1.addData(frameRate - RandomGenerator.randomFloat(30));
   graph2.addData(-1 * frameRate + RandomGenerator.randomFloat(30));
+  graph3.addData(RandomGenerator.randomInt(-30, 30));
 
 }
 
@@ -196,7 +198,7 @@ void data() {
   //here is where the code for the data screen would go
   graph1.create();
   graph2.create();
-  
+  graph3.create();
 }
 
 void settings() {
@@ -272,6 +274,8 @@ void mouseClicked() {
         graph1.shouldCollectData = false;
         graph2.resetData();
         graph2.shouldCollectData = false;
+        graph3.resetData();
+        graph3.shouldCollectData = false;
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
@@ -297,7 +301,8 @@ void mouseClicked() {
         graph1.shouldCollectData = true;
         graph2.resetData();
         graph2.shouldCollectData = true;
-
+        graph3.resetData();
+        graph3.shouldCollectData = true;
 
       }
       //here is where the switch to data screen code is located
