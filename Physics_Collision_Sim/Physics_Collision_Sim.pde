@@ -94,6 +94,10 @@ void toWelcomeScreen() {
 
 void simulator() {
   background(200);
+  //SandGrains
+  tableSand.setMu(frictionSlider.currentValue);
+  tableSand.update();
+
   //create the start and restart buttons
   restartButton.create(38, 31);
   startSimButton.create(58, 31);
@@ -151,9 +155,6 @@ void simulator() {
   //Update the blocks
   block1.update(frictionSlider.currentValue);
   block2.update(frictionSlider.currentValue);
-  //SandGrains
-  tableSand.setMu(frictionSlider.currentValue);
-  tableSand.update();
 
   //Check for a collision and determine its type
   if(block1.hasCollidedWith(block2) || block1.hasCollidedWith(block1)) {
