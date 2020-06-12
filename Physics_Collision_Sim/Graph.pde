@@ -85,6 +85,8 @@ class Graph {
       //Go back to the simulator because there are no collected data
       currentScreen = Screen.SIMULATOR;
       minValue = 0;
+      
+      e.printStackTrace();
     }
     return minValue;
   }
@@ -113,6 +115,20 @@ class Graph {
       
     } else if(this.findMax() < 0) {
       
+      //Set the maxX and maxY values
+      this.maxX = (float)(this.data.size()/60) + 1;
+      this.maxY = 10 * ceil(this.findMin()/10) - 10;
+      
+      //Graph Axes
+      line(this.x, this.y - this.height, this.x, this.y);
+      line(this.x, this.y - this.height, this.x + this.width, this.y - this.height);
+      
+      //Graph Text
+      text(Integer.toString((int)maxY), this.x - 35, this.y + 10);
+      text("0", this.x - 15, this.y - this.height + 18);
+      text("0", this.x, this.y - this.height - 5);
+      text(Integer.toString((int)maxX), this.x + this.width - 5, this.y - this.height - 5);
+      text(this.title, this.x + this.width/5, this.y - this.height - 35);
     } else {
       
     }
@@ -130,7 +146,15 @@ class Graph {
       fill(0);
       float xcoord = i * scaledX;
       float ycoord = this.data.get(i) * scaledY;
-      circle(this.x + xcoord, this.y - ycoord, 4);
+      
+      System.out.println(ycoord);
+      
+      if(this.findMin() > 0) {
+        circle(this.x + xcoord, this.y - ycoord, 4);
+      } else if(this.findMax() < 0) {
+        circle(this.x + xcoord, this.y - (this.height - ycoord), 4);
+      }
+      
     }
   }
 } 

@@ -39,6 +39,7 @@ Block block2 = new Block(posX2, 300);
 
 //Graphs
 Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
+Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
 
 
 //Screen options
@@ -185,7 +186,8 @@ void simulator() {
   block1.checkBounds();
   block2.checkBounds();
   
-  graph1.addData(frameRate);
+  graph1.addData(frameRate - RandomGenerator.randomFloat(30));
+  graph2.addData(-1 * frameRate + RandomGenerator.randomFloat(30));
 
 }
 
@@ -193,6 +195,7 @@ void data() {
   background(200);
   //here is where the code for the data screen would go
   graph1.create();
+  graph2.create();
   
 }
 
@@ -263,6 +266,12 @@ void mouseClicked() {
         //Create them so we can see them
         block1.shouldDraw = true;
         block2.shouldDraw = true;
+        
+        //Reset the graphs
+        graph1.resetData();
+        graph1.shouldCollectData = false;
+        graph2.resetData();
+        graph2.shouldCollectData = false;
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
@@ -286,6 +295,8 @@ void mouseClicked() {
         //Reset the graphs
         graph1.resetData();
         graph1.shouldCollectData = true;
+        graph2.resetData();
+        graph2.shouldCollectData = true;
 
 
       }
