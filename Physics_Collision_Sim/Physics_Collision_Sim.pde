@@ -39,6 +39,7 @@ Block block2 = new Block(posX2, 300);
 
 //sandGrains
 sandGrains tableSand = new sandGrains();
+
 //Graphs
 Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
 Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
@@ -206,8 +207,10 @@ void simulator() {
 
 void data() {
   background(200);
+  
   //create the restart button
   restartButton.create(38, 31);
+  
   //here is where the code for the data screen would go
   graph1.create();
   graph2.create();
