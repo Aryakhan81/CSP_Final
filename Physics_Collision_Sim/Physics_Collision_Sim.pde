@@ -37,6 +37,8 @@ Slider mass2Slider = new Slider(862, 650, 0.1, 5);
 Block block1 = new Block(posX1, 300);
 Block block2 = new Block(posX2, 300);
 
+//sandGrains
+sandGrains tableSand = new sandGrains();
 //Screen options
 public enum Screen {
   //What screens do we want to have?
@@ -92,6 +94,10 @@ void toWelcomeScreen() {
 
 void simulator() {
   background(200);
+  //SandGrains
+  tableSand.setMu(frictionSlider.currentValue);
+  tableSand.update();
+
   //create the start and restart buttons
   restartButton.create(38, 31);
   startSimButton.create(58, 31);

@@ -32,15 +32,15 @@ class Block {
     } else {
       this.velocity = 0;
     }
-    
+
     //Set dynamics quantities
     this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
     this.momentum = this.mass * this.velocity;
-    
+
     if(this.shouldDraw) {
       this.create();
     }
-    
+
   }
 
   //Give me the velocity. Should only be used on the action of the start button
@@ -63,7 +63,7 @@ class Block {
       return false;
     }
   }
-  
+
   //Check to see if it has gone out of bounds
   public void checkBounds() {
     if(this.x < posX1 - this.width/2 || this.x > posX2 + this.width/2) {
@@ -72,6 +72,6 @@ class Block {
       return;
     }
   }
-  
-  
+
+
 }
