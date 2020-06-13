@@ -20,25 +20,30 @@ class Block {
   //Update the block's kinematic quantities
   public void update(float coefficientOfFriction) {
     //Will call this.create()
-    float friction = coefficientOfFriction * mass * g;
-    this.accelerationByFriction = friction / mass;
-    this.x += (1.6667 * this.velocity);
-
-    //Determine which direction the friction should act
-    if(this.velocity > 0.01) {
-      this.velocity -= accelerationByFriction;
-    } else if(this.velocity < -0.01) {
-      this.velocity += accelerationByFriction;
-    } else {
-      this.velocity = 0;
-    }
-
-    //Set dynamics quantities
-    this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
-    this.momentum = this.mass * this.velocity;
 
     if(this.shouldDraw) {
+
+      //Update kinematic quantities
+      float friction = coefficientOfFriction * mass * g;
+      this.accelerationByFriction = friction / mass;
+      this.x += (1.6667 * this.velocity);
+
+      //Determine which direction the friction should act
+      if(this.velocity > 0.01) {
+        this.velocity -= accelerationByFriction;
+      } else if(this.velocity < -0.01) {
+        this.velocity += accelerationByFriction;
+      } else {
+        this.velocity = 0;
+        this.accelerationByFriction = 0;
+      }
+
+      //Set dynamics quantities
+      this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
+      this.momentum = this.mass * this.velocity;
+
       this.create();
+
     }
 
   }

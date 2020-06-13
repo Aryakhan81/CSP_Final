@@ -4,8 +4,8 @@
 -> Enumeration for the screen names - DONE
 -> Classes for Buttons, Sliders and Two-Way Buttons - DONE
 -> Functions setting the screen upon each screen transition - DONE
--> setup(), draw() and mouseClicked()
--> Functions for elastic and inelastic collisions
+-> setup(), draw() and mouseClicked() - DONE
+-> Functions for elastic and inelastic collisions - DONE
 **/
 
 //Global constant for gravity
@@ -39,6 +39,13 @@ Block block2 = new Block(posX2, 300);
 
 //sandGrains
 sandGrains tableSand = new sandGrains();
+//Graphs
+Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
+Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
+Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
+Graph momentumGraph = new Graph(400, 700, 200, 200, "Momentum 1 vs Time");
+
+
 //Screen options
 public enum Screen {
   //What screens do we want to have?
@@ -101,6 +108,7 @@ void simulator() {
   //create the start and restart buttons
   restartButton.create(38, 31);
   startSimButton.create(58, 31);
+  dataButton.create(38, 31);
   //this is where the design for the simulator screen should go
   //creates the two-way buttons and assigns them as partners
   elasticButton.create(53, 31);
@@ -186,14 +194,27 @@ void simulator() {
   block1.checkBounds();
   block2.checkBounds();
 
+  graph1.addData(frameRate - RandomGenerator.randomFloat(30));
+  graph2.addData(-1 * frameRate + RandomGenerator.randomFloat(30));
+  graph3.addData(RandomGenerator.randomInt(-30, 30));
+
+  if(block1.shouldDraw) {
+    momentumGraph.addData(block1.momentum);
+  }
+
 }
 
 void data() {
-  //here is where the code for the data screen would go
   background(200);
   //create the restart button
   restartButton.create(38, 31);
+  //here is where the code for the data screen would go
+  graph1.create();
+  graph2.create();
+  graph3.create();
+  momentumGraph.create();
 }
+
 void settings() {
   //Decide on screen size here
   size(1200, 800);
@@ -261,6 +282,16 @@ void mouseClicked() {
         //Create them so we can see them
         block1.shouldDraw = true;
         block2.shouldDraw = true;
+
+        //Reset the graphs
+        graph1.resetData();
+        graph1.shouldCollectData = false;
+        graph2.resetData();
+        graph2.shouldCollectData = false;
+        graph3.resetData();
+        graph3.shouldCollectData = false;
+        momentumGraph.resetData();
+        momentumGraph.shouldCollectData = false;
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
@@ -281,6 +312,15 @@ void mouseClicked() {
         block1.shouldDraw = true;
         block2.shouldDraw = true;
 
+        //Reset the graphs
+        graph1.resetData();
+        graph1.shouldCollectData = true;
+        graph2.resetData();
+        graph2.shouldCollectData = true;
+        graph3.resetData();
+        graph3.shouldCollectData = true;
+        momentumGraph.resetData();
+        momentumGraph.shouldCollectData = true;
 
       }
       //here is where the switch to data screen code is located
