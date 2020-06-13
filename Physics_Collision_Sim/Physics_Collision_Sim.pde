@@ -245,6 +245,10 @@ public void restart() {
   block1.shouldDraw = true;
   block2.shouldDraw = true;
 
+  //reset sand
+  tableSand.setMu(0);
+  tableSand.update();
+
   //Reset the graphs
   graph1.resetData();
   graph1.shouldCollectData = false;
