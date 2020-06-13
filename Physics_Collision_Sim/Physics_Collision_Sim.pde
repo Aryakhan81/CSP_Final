@@ -41,6 +41,7 @@ Block block2 = new Block(posX2, 300);
 Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
 Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
 Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
+Graph momentumGraph = new Graph(400, 700, 200, 200, "Momentum 1 vs Time");
 
 
 //Screen options
@@ -190,6 +191,10 @@ void simulator() {
   graph1.addData(frameRate - RandomGenerator.randomFloat(30));
   graph2.addData(-1 * frameRate + RandomGenerator.randomFloat(30));
   graph3.addData(RandomGenerator.randomInt(-30, 30));
+  
+  if(block1.shouldDraw) {
+    momentumGraph.addData(block1.momentum);
+  }
 
 }
 
@@ -199,6 +204,7 @@ void data() {
   graph1.create();
   graph2.create();
   graph3.create();
+  momentumGraph.create();
 }
 
 void settings() {
@@ -276,6 +282,8 @@ void mouseClicked() {
         graph2.shouldCollectData = false;
         graph3.resetData();
         graph3.shouldCollectData = false;
+        momentumGraph.resetData();
+        momentumGraph.shouldCollectData = false;
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
@@ -303,6 +311,8 @@ void mouseClicked() {
         graph2.shouldCollectData = true;
         graph3.resetData();
         graph3.shouldCollectData = true;
+        momentumGraph.resetData();
+        momentumGraph.shouldCollectData = true;
 
       }
       //here is where the switch to data screen code is located

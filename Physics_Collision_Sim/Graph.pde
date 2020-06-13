@@ -94,13 +94,20 @@ class Graph {
   //Draw the outline of the graph. Private method; will only be used in this class
   private void drawOutline() {
     fill(0);
-    System.out.println(this.title + ": " + this.findMax()); 
+
     //See if we should draw a negative y part as well
     if(this.findMin() > 0) {
       
       //Set the maxX and maxY values
       this.maxX = (float)(this.data.size()/60) + 1;
-      this.maxY = 10 * ceil(this.findMax()/10) + 10;
+      
+      if(this.findMax() > 15) {
+        this.maxY = 10 * ceil(this.findMax()/10);
+      } else if(this.findMax() < 15 && this.findMax() > 0.1) {
+        this.maxY = 5 * ceil(this.findMax()/5);
+      } else {
+        this.maxY = 1;
+      }
       
       //Graph Axes
       line(this.x, this.y - this.height, this.x, this.y);
@@ -117,7 +124,15 @@ class Graph {
       
       //Set the maxX and maxY values
       this.maxX = (float)(this.data.size()/60) + 1;
-      this.maxY = 10 * ceil(this.findMin()/10) - 10;
+      
+      
+      if(abs(this.findMin()) > 15) {
+        this.maxY = -10 * ceil(abs(this.findMin()/10));
+      } else if(abs(this.findMin()) < 15 && abs(this.findMin()) > 0.1) {
+        this.maxY = -5 * ceil(abs(this.findMin()/5));
+      } else {
+        this.maxY = -1;
+      }
       
       //Graph Axes
       line(this.x, this.y - this.height, this.x, this.y);
@@ -134,7 +149,15 @@ class Graph {
       
       //Set the maxX and maxY values
       this.maxX = (float)(this.data.size()/60) + 1;
-      this.maxY = Math.max(abs(10 * ceil(this.findMin()/10) - 10), abs(10 * ceil(this.findMax()/10) + 10));
+      
+      if(Math.max(abs(this.findMin()), abs(this.findMax())) > 15) {
+        this.maxY = Math.max(abs(10 * ceil(this.findMin()/10)), abs(10 * ceil(this.findMax()/10)));
+      } else if(Math.max(abs(this.findMin()), abs(this.findMax())) < 15 && Math.max(abs(this.findMin()), abs(this.findMax())) > 0.1) {
+        this.maxY = Math.max(abs(5 * ceil(this.findMin()/5)), abs(5 * ceil(this.findMax()/5)));
+      } else {
+        this.maxY = 1;
+      }
+      
       
       //Graph Axes
       line(this.x, this.y - this.height, this.x, this.y);
