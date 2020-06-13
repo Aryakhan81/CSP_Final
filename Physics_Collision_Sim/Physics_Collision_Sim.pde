@@ -44,7 +44,9 @@ Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
 Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
 Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
 Graph momentumGraph = new Graph(400, 700, 200, 200, "Momentum 1 vs Time");
-// max x max y, width, height
+// x, y, width, height, title
+//kinetic Energy
+//velocity graph
 
 
 //Screen options
