@@ -25,7 +25,7 @@ class TwoWayButton extends Button {
       
       //If it's clicked, it will be black with white text
       textSize(16);
-      fill(0);
+      fill(100);
       rect(this.x, this.y, this.width, this.height, 12);
       fill(255);
       text(this.text, this.x + textX, this.y + textY);  

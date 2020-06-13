@@ -221,6 +221,47 @@ void data() {
   momentumGraph.create();
 }
 
+//this is the function for the restart buttons
+public void restart() {
+  //set the elastic/inelastic back to default
+  elasticButton.isClicked = false;
+  inelasticButton.isClicked = true;
+  //sets the friction back to default
+  frictionSlider.x = frictionSlider.lineX;
+  frictionSlider.updateCurrentValue();
+  //sets the initial velocities back to default
+  initialVelocity1Slider.x = initialVelocity1Slider.lineX;
+  initialVelocity2Slider.x = initialVelocity2Slider.lineX;
+  initialVelocity1Slider.updateCurrentValue();
+  initialVelocity2Slider.updateCurrentValue();
+  //sets the masses back to default
+  mass1Slider.x = mass1Slider.lineX;
+  mass2Slider.x = mass2Slider.lineX;
+  mass1Slider.updateCurrentValue();
+  mass2Slider.updateCurrentValue();
+  //here is where we will set the values back to default for the blocks
+  //Set the velocities of the blocks back to 0
+  block1.velocity = 0;
+  block2.velocity = 0;
+  //Set the positions of the blocks back to default
+  block1.x = posX1;
+  block2.x = posX2;
+
+  //Create them so we can see them
+  block1.shouldDraw = true;
+  block2.shouldDraw = true;
+
+  //Reset the graphs
+  graph1.resetData();
+  graph1.shouldCollectData = false;
+  graph2.resetData();
+  graph2.shouldCollectData = false;
+  graph3.resetData();
+  graph3.shouldCollectData = false;
+  momentumGraph.resetData();
+  momentumGraph.shouldCollectData = false;
+}
+
 void settings() {
   //Decide on screen size here
   size(1200, 800);
@@ -260,45 +301,7 @@ void mouseClicked() {
     case SIMULATOR:
       //here is where we put the code for the buttons inside the simulator
       if(restartButton.checkClick()) {
-        //here is where we might want to reset the physics values to default
-        //set the elastic/inelastic back to default
-        elasticButton.isClicked = false;
-        inelasticButton.isClicked = true;
-        //sets the friction back to default
-        frictionSlider.x = frictionSlider.lineX;
-        frictionSlider.updateCurrentValue();
-        //sets the initial velocities back to default
-        initialVelocity1Slider.x = initialVelocity1Slider.lineX;
-        initialVelocity2Slider.x = initialVelocity2Slider.lineX;
-        initialVelocity1Slider.updateCurrentValue();
-        initialVelocity2Slider.updateCurrentValue();
-        //sets the masses back to default
-        mass1Slider.x = mass1Slider.lineX;
-        mass2Slider.x = mass2Slider.lineX;
-        mass1Slider.updateCurrentValue();
-        mass2Slider.updateCurrentValue();
-        //here is where we will set the values back to default for the blocks
-        //Set the velocities of the blocks back to 0
-        block1.velocity = 0;
-        block2.velocity = 0;
-        //Set the positions of the blocks back to default
-        block1.x = posX1;
-        block2.x = posX2;
-
-        //Create them so we can see them
-        block1.shouldDraw = true;
-        block2.shouldDraw = true;
-
-        //Reset the graphs
-        graph1.resetData();
-        graph1.shouldCollectData = false;
-        graph2.resetData();
-        graph2.shouldCollectData = false;
-        graph3.resetData();
-        graph3.shouldCollectData = false;
-        momentumGraph.resetData();
-        momentumGraph.shouldCollectData = false;
-        //reset graphs part1
+        restart();
       }
       if(startSimButton.checkClick()) {
         //here is where we put the code to start the simulation
@@ -343,33 +346,7 @@ void mouseClicked() {
       if(restartButton.checkClick()) {
         //the important restart button
         currentScreen = Screen.SIMULATOR;
-        //set the elastic/inelastic back to default
-        elasticButton.isClicked = false;
-        inelasticButton.isClicked = true;
-        //sets the friction back to default
-        frictionSlider.x = frictionSlider.lineX;
-        frictionSlider.updateCurrentValue();
-        //sets the initial velocities back to default
-        initialVelocity1Slider.x = initialVelocity1Slider.lineX;
-        initialVelocity2Slider.x = initialVelocity2Slider.lineX;
-        initialVelocity1Slider.updateCurrentValue();
-        initialVelocity2Slider.updateCurrentValue();
-        //sets the masses back to default
-        mass1Slider.x = mass1Slider.lineX;
-        mass2Slider.x = mass2Slider.lineX;
-        mass1Slider.updateCurrentValue();
-        mass2Slider.updateCurrentValue();
-        //here is where we will set the values back to default for the blocks
-        //Set the velocities of the blocks back to 0
-        block1.velocity = 0;
-        block2.velocity = 0;
-        //Set the positions of the blocks back to default
-        block1.x = posX1;
-        block2.x = posX2;
-
-        //Create them so we can see them
-        block1.shouldDraw = true;
-        block2.shouldDraw = true;
+        restart();
       }
   }
 }
