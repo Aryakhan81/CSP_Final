@@ -47,6 +47,7 @@ Graph momentumGraph = new Graph(400, 700, 200, 200, "Momentum 1 vs Time");
 // x, y, width, height, title
 //kinetic Energy
 //velocity graph
+//position graph
 
 
 //Screen options
