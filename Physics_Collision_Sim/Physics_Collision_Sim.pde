@@ -44,6 +44,10 @@ Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
 Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
 Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
 Graph momentumGraph = new Graph(400, 700, 200, 200, "Momentum 1 vs Time");
+// x, y, width, height, title
+//kinetic Energy
+//velocity graph
+//position graph
 
 
 //Screen options
@@ -200,8 +204,10 @@ void simulator() {
 
   if(block1.shouldDraw) {
     momentumGraph.addData(block1.momentum);
+    //used to see if the block is drawn and creates graph data
   }
-
+//kinetic energy graph
+//velocity graph
 }
 
 void data() {
@@ -329,7 +335,7 @@ void mouseClicked() {
         graph3.shouldCollectData = true;
         momentumGraph.resetData();
         momentumGraph.shouldCollectData = true;
-
+        //reset graphs part 2
       }
       //here is where the switch to data screen code is located
       if(dataButton.checkClick()) {
@@ -342,6 +348,7 @@ void mouseClicked() {
     case DATA:
       //here is where we put the code for the buttons in the DATA screen
       if(restartButton.checkClick()) {
+        //the important restart button
         currentScreen = Screen.SIMULATOR;
         restart();
       }
