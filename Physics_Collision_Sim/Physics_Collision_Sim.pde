@@ -36,8 +36,8 @@ Slider mass1Slider = new Slider(862, 550, 0.1, 5);
 Slider mass2Slider = new Slider(862, 650, 0.1, 5);
 
 //blocks
-Block block1 = new Block(posX1, 300);
-Block block2 = new Block(posX2, 300);
+Block block1 = new Block(posX1, 300, "1414C8");
+Block block2 = new Block(posX2, 300, "14C814");
 
 //sandGrains
 sandGrains tableSand = new sandGrains();

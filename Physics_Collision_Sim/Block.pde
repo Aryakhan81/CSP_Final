@@ -3,22 +3,23 @@ class Block {
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, x, y, width, height, accelerationByFriction;
   float kineticEnergy, momentum;
-  float red, green, blue, absoluteVelocity;
+  float absoluteVelocity;
+  float hexColor;
   boolean shouldDraw = true;
 
-  public Block(float x, float y) {
+  public Block(float x, float y, String hex) {
     this.x = x;
     this.y = y;
     this.width = this.height = 50;
 
     //Start at default colors
-    this.resetColor();
+    this.hexColor = unhex(hex);
   }
 
   //Create the image of the block
   public void create() {
     // fill(20, 20, 200);
-    fill(20 + red, 20 + green, 200+ blue);
+    fill(this.hexColor);
     rect(this.x, this.y, this.width, this.height);
   }
   //bandage solution to blocks not resetting color
@@ -55,7 +56,7 @@ class Block {
       //Set dynamics quantities
       this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
       this.momentum = this.mass * this.velocity;
-      this.colorChange();
+      //this.colorChange();
       this.create();
     }
   }
@@ -130,13 +131,14 @@ class Block {
       //red
     }
   }
-
+  
+  //OLD: do not use
   //Reset color to the default value
-  private void resetColor() {
-    this.red = 0;
-    this.blue = 0;
-    this.green = 0;
-  }
+  //private void resetColor() {
+    //this.red = 0;
+    //this.blue = 0;
+    //this.green = 0;
+  //}
 
   //Give me the velocity. Should only be used on the action of the start button
   public void setInitialVelocity(float v) {
