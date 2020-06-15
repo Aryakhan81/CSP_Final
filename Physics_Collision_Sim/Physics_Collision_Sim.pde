@@ -129,8 +129,8 @@ void simulator() {
   fill(0);
   text("Collision type:", 925, 75);
   text("Coefficient of friction", 862, 235);
-  text("Initial velocity of block 1", 862, 335);
-  text("Initial velocity of block 2", 862, 435);
+  text("Initial velocity of block 1 (m/s)", 862, 335);
+  text("Initial velocity of block 2 (m/s)", 862, 435);
   text("Mass of block 1 (kg)", 865, 535);
   text("Mass of block 2 (kg)", 865, 635);
   //update the current value of the sliders
