@@ -10,6 +10,9 @@ class Block {
     this.x = x;
     this.y = y;
     this.width = this.height = 50;
+    
+    //Start at default colors
+    this.resetColor();
   }
 
   //Create the image of the block
@@ -60,70 +63,81 @@ class Block {
 
   //checks if velocity is positve or Negative and stores its absolute value in a variable
   public void colorChange(){
-  if(this.velocity < 0){
-    absoluteVelocity = this.velocity*-1;
+    if(this.velocity < -0.01){
+      absoluteVelocity = this.velocity*-1;
+    }
+    else if (this.velocity > 0.01){
+      absoluteVelocity = this.velocity;
+    }
+    else {
+      absoluteVelocity = 0;
+    }
+    
+    if(absoluteVelocity < 0.01) {
+      this.resetColor();
+    }
+    else if((absoluteVelocity > 0.01) && (absoluteVelocity < 1)){
+      red = -20;
+      green = -20;
+      blue =55;
+      //blue
+    }
+    else if(absoluteVelocity >= 1 && absoluteVelocity <2){
+      red =-20;
+      green =107.5;
+      blue =55;
+      //green blue
+    }
+    else if(absoluteVelocity >= 2 && absoluteVelocity <3){
+      red =-20;
+      green =235;
+      blue =55;
+      //cyan
+    }
+    else if(absoluteVelocity >= 3 && absoluteVelocity <4){
+      red =-20;
+      green =235;
+      blue =-72.5;
+      //blue green
+    }
+    else if(absoluteVelocity >= 4 && absoluteVelocity <5){
+      red =-20;
+      green =235;
+      blue =-200;
+      //green
+    }
+    else if(absoluteVelocity >= 5 && absoluteVelocity <6){
+      red =107.5;
+      green =235;
+      blue =-200;
+      //yellow green
+    }
+    else if(absoluteVelocity >= 6 && absoluteVelocity <7){
+      red =235;
+      green =235;
+      blue =-200;
+      //yellow
+    }
+    else if(absoluteVelocity >= 7 && absoluteVelocity <8){
+      red =235;
+      green =107.5;
+      blue =-200;
+      //orange
+    }
+    else if(absoluteVelocity >= 8 && absoluteVelocity <10){
+      red =235;
+      green =-20;
+      blue =-200;
+      //red
+    }
   }
-  else if (this.velocity > 0){
-    absoluteVelocity = this.velocity;
+  
+  //Reset color to the default value
+  private void resetColor() {
+    this.red = 0;
+    this.blue = 0;
+    this.green = 0;
   }
-  if((absoluteVelocity > 0) && (absoluteVelocity < 1)){
-    red = -20;
-    green = -20;
-    blue =55;
-    //blue
-  }
-  else if(absoluteVelocity >= 1 && absoluteVelocity <2){
-    red =-20;
-    green =107.5;
-    blue =55;
-    //green blue
-  }
-  else if(absoluteVelocity >= 2 && absoluteVelocity <3){
-    red =-20;
-    green =235;
-    blue =55;
-    //cyan
-  }
-  else if(absoluteVelocity >= 3 && absoluteVelocity <4){
-    red =-20;
-    green =235;
-    blue =-72.5;
-    //blue green
-  }
-  else if(absoluteVelocity >= 4 && absoluteVelocity <5){
-    red =-20;
-    green =235;
-    blue =-200;
-    //green
-  }
-  else if(absoluteVelocity >= 5 && absoluteVelocity <6){
-    red =107.5;
-    green =235;
-    blue =-200;
-    //yellow green
-  }
-  else if(absoluteVelocity >= 6 && absoluteVelocity <7){
-    red =235;
-    green =235;
-    blue =-200;
-    //yellow
-  }
-  else if(absoluteVelocity >= 7 && absoluteVelocity <8){
-    red =235;
-    green =107.5;
-    blue =-200;
-    //orange
-  }
-  else if(absoluteVelocity >= 8 && absoluteVelocity <10){
-    red =235;
-    green =-20;
-    blue =-200;
-    //red
-  }
-}
-
-
-
 
   //Give me the velocity. Should only be used on the action of the start button
   public void setInitialVelocity(float v) {

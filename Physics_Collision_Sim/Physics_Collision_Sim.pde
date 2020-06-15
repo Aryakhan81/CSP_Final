@@ -269,13 +269,6 @@ public void restart() {
   //Set the positions of the blocks back to default
   block1.x = posX1;
   block2.x = posX2;
-  //reset the color of the blocks
-  // block1.createOriginal();
-  // block2.createOriginal();
-  block1.colorChange();
-  block2.colorChange();
-  block1.create();
-  block2.create();
 
   //Create them so we can see them
   block1.shouldDraw = true;
@@ -284,13 +277,8 @@ public void restart() {
   //sandGrains
   tableSand.setMu(0);
   tableSand.update();
+  
   //Reset the graphs
-  // graph1.resetData();
-  // graph1.shouldCollectData = false;
-  // graph2.resetData();
-  // graph2.shouldCollectData = false;
-  // graph3.resetData();
-  // graph3.shouldCollectData = false;
   momentum1Graph.resetData();
   momentum1Graph.shouldCollectData = false;
   momentum2Graph.resetData();
@@ -370,12 +358,6 @@ void mouseClicked() {
         block2.shouldDraw = true;
 
         //Reset the graphs
-        // graph1.resetData();
-        // graph1.shouldCollectData = true;
-        // graph2.resetData();
-        // graph2.shouldCollectData = true;
-        // graph3.resetData();
-        // graph3.shouldCollectData = true;
         momentum1Graph.resetData();
         momentum1Graph.shouldCollectData = true;
         momentum2Graph.resetData();

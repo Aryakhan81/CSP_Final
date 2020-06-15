@@ -103,8 +103,10 @@ class Graph {
       
       if(this.findMax() > 15) {
         this.maxY = 10 * ceil(this.findMax()/10);
-      } else if(this.findMax() < 15 && this.findMax() > 0.1) {
-        this.maxY = 5 * ceil(this.findMax()/5);
+      } else if(this.findMax() <= 15 && this.findMax() > 5) {
+        this.maxY = 5 * ceil(this.findMax()/5);       
+      } else if(this.findMax() <= 5 && this.findMax() > 0.1) {
+        this.maxY = 2 * ceil(this.findMax()/2);
       } else {
         this.maxY = 1;
       }
@@ -128,8 +130,10 @@ class Graph {
       
       if(abs(this.findMin()) > 15) {
         this.maxY = -10 * ceil(abs(this.findMin()/10));
-      } else if(abs(this.findMin()) < 15 && abs(this.findMin()) > 0.1) {
-        this.maxY = -5 * ceil(abs(this.findMin()/5));
+      } else if(abs(this.findMin()) <= 15 && abs(this.findMin()) > 5) {
+        this.maxY = -5 * ceil(abs(this.findMin()/5));        
+      } else if(abs(this.findMin()) <= 5 && abs(this.findMin()) > 0.1) {
+        this.maxY = -2 * ceil(abs(this.findMin()/2));
       } else {
         this.maxY = -1;
       }
@@ -152,8 +156,10 @@ class Graph {
       
       if(Math.max(abs(this.findMin()), abs(this.findMax())) > 15) {
         this.maxY = Math.max(abs(10 * ceil(this.findMin()/10)), abs(10 * ceil(this.findMax()/10)));
-      } else if(Math.max(abs(this.findMin()), abs(this.findMax())) < 15 && Math.max(abs(this.findMin()), abs(this.findMax())) > 0.1) {
+      } else if(Math.max(abs(this.findMin()), abs(this.findMax())) <= 15 && Math.max(abs(this.findMin()), abs(this.findMax())) > 5) {
         this.maxY = Math.max(abs(5 * ceil(this.findMin()/5)), abs(5 * ceil(this.findMax()/5)));
+      } else if(Math.max(abs(this.findMin()), abs(this.findMax())) <= 5 && Math.max(abs(this.findMin()), abs(this.findMax())) > 0.1) {
+        this.maxY = Math.max(abs(5 * ceil(this.findMin()/5)), abs(2 * ceil(this.findMax()/2)));
       } else {
         this.maxY = 1;
       }
