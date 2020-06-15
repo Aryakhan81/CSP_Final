@@ -45,12 +45,12 @@ sandGrains tableSand = new sandGrains();
 //Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
 //Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
 //Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
-Graph momentum1Graph = new Graph(50, 400, 200, 200, "Momentum 1 vs Time");
-Graph momentum2Graph = new Graph(50, 700, 200, 200, "Momentum 2 vs Time");
-Graph position1Graph = new Graph(350, 400, 200, 200, "Position 1 vs Time");
-Graph position2Graph = new Graph(350, 700, 200, 200, "Position 2 vs Time");
-Graph velocity1Graph = new Graph(650, 400, 200, 200, "Velocity 1 vs Time");
-Graph velocity2Graph = new Graph(650, 700, 200, 200, "Velocity 2 vs Time");
+Graph momentum1Graph = new Graph(650, 400, 200, 200, "Momentum 1 vs Time");
+Graph momentum2Graph = new Graph(650, 700, 200, 200, "Momentum 2 vs Time");
+Graph position1Graph = new Graph(50, 400, 200, 200, "Position 1 vs Time");
+Graph position2Graph = new Graph(50, 700, 200, 200, "Position 2 vs Time");
+Graph velocity1Graph = new Graph(350, 400, 200, 200, "Velocity 1 vs Time");
+Graph velocity2Graph = new Graph(350, 700, 200, 200, "Velocity 2 vs Time");
 Graph kineticEnergy1Graph = new Graph(950, 400, 200, 200, "Kinetic Energy 1 vs Time");
 Graph kineticEnergy2Graph = new Graph(950, 700, 200, 200, "Kinetic Energy 2 vs Time");
 // x, y, width, height, title
@@ -277,7 +277,7 @@ public void restart() {
   //sandGrains
   tableSand.setMu(0);
   tableSand.update();
-  
+
   //Reset the graphs
   momentum1Graph.resetData();
   momentum1Graph.shouldCollectData = false;
