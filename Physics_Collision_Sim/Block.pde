@@ -19,9 +19,6 @@ class Block {
   public void create() {
     // fill(20, 20, 200);
     fill(20 + red, 20 + green, 200+ blue);
-    // System.out.println(red + " red");
-    // System.out.println(green + " green");
-    // System.out.println(blue + " blue");
     rect(this.x, this.y, this.width, this.height);
   }
   //bandage solution to blocks not resetting color
@@ -56,9 +53,7 @@ class Block {
       this.momentum = this.mass * this.velocity;
       this.colorChange();
       this.create();
-
     }
-
   }
 
   //checks if velocity is positve or Negative and stores its absolute value in a variable
@@ -162,7 +157,7 @@ class Block {
 
   //Check to see if it has gone out of bounds
   public void checkBounds() {
-    if(this.x < posX1 - this.width/2 || this.x > posX2 + this.width/2) {
+    if(this.x < posX1 - this.width/2 - 5.5 || this.x > posX2 + this.width/2) {
       this.shouldDraw = false;
     } else {
       return;
