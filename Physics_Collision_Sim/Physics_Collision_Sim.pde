@@ -269,6 +269,13 @@ public void restart() {
   //Set the positions of the blocks back to default
   block1.x = posX1;
   block2.x = posX2;
+  //reset the color of the blocks
+  // block1.createOriginal();
+  // block2.createOriginal();
+  block1.colorChange();
+  block2.colorChange();
+  block1.create();
+  block2.create();
 
   //Create them so we can see them
   block1.shouldDraw = true;

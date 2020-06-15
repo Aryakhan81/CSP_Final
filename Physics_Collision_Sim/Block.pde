@@ -3,6 +3,7 @@ class Block {
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, x, y, width, height, accelerationByFriction;
   float kineticEnergy, momentum;
+  float red, green, blue, absoluteVelocity;
   boolean shouldDraw = true;
 
   public Block(float x, float y) {
@@ -13,9 +14,18 @@ class Block {
 
   //Create the image of the block
   public void create() {
-    fill(20, 20, 200);
+    // fill(20, 20, 200);
+    fill(20 + red, 20 + green, 200+ blue);
+    // System.out.println(red + " red");
+    // System.out.println(green + " green");
+    // System.out.println(blue + " blue");
     rect(this.x, this.y, this.width, this.height);
   }
+  //bandage solution to blocks not resetting color
+  // public void createOriginal() {
+  //   fill(20, 20, 200);
+  //   rect(this.x, this.y, this.width, this.height);
+  // }
 
   //Update the block's kinematic quantities
   public void update(float coefficientOfFriction) {
@@ -41,12 +51,79 @@ class Block {
       //Set dynamics quantities
       this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
       this.momentum = this.mass * this.velocity;
-
+      this.colorChange();
       this.create();
 
     }
 
   }
+
+  //checks if velocity is positve or Negative and stores its absolute value in a variable
+  public void colorChange(){
+  if(this.velocity < 0){
+    absoluteVelocity = this.velocity*-1;
+  }
+  else if (this.velocity > 0){
+    absoluteVelocity = this.velocity;
+  }
+  if((absoluteVelocity > 0) && (absoluteVelocity < 1)){
+    red = -20;
+    green = -20;
+    blue =55;
+    //blue
+  }
+  else if(absoluteVelocity >= 1 && absoluteVelocity <2){
+    red =-20;
+    green =107.5;
+    blue =55;
+    //green blue
+  }
+  else if(absoluteVelocity >= 2 && absoluteVelocity <3){
+    red =-20;
+    green =235;
+    blue =55;
+    //cyan
+  }
+  else if(absoluteVelocity >= 3 && absoluteVelocity <4){
+    red =-20;
+    green =235;
+    blue =-72.5;
+    //blue green
+  }
+  else if(absoluteVelocity >= 4 && absoluteVelocity <5){
+    red =-20;
+    green =235;
+    blue =-200;
+    //green
+  }
+  else if(absoluteVelocity >= 5 && absoluteVelocity <6){
+    red =107.5;
+    green =235;
+    blue =-200;
+    //yellow green
+  }
+  else if(absoluteVelocity >= 6 && absoluteVelocity <7){
+    red =235;
+    green =235;
+    blue =-200;
+    //yellow
+  }
+  else if(absoluteVelocity >= 7 && absoluteVelocity <8){
+    red =235;
+    green =107.5;
+    blue =-200;
+    //orange
+  }
+  else if(absoluteVelocity >= 8 && absoluteVelocity <10){
+    red =235;
+    green =-20;
+    blue =-200;
+    //red
+  }
+}
+
+
+
 
   //Give me the velocity. Should only be used on the action of the start button
   public void setInitialVelocity(float v) {
