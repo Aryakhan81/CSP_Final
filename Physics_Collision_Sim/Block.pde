@@ -4,22 +4,24 @@ class Block {
   float velocity, mass, x, y, width, height, accelerationByFriction;
   float kineticEnergy, momentum;
   float absoluteVelocity;
-  float hexColor;
+  float r, g, b;
   boolean shouldDraw = true;
 
-  public Block(float x, float y, String hex) {
+  public Block(float x, float y, float r, float g, float b) {
     this.x = x;
     this.y = y;
     this.width = this.height = 50;
 
     //Start at default colors
-    this.hexColor = unhex(hex);
+    this.r = r;
+    this.g = g;
+    this.b = b;
   }
 
   //Create the image of the block
   public void create() {
     // fill(20, 20, 200);
-    fill(this.hexColor);
+    fill(this.r, this.g, this.b);
     rect(this.x, this.y, this.width, this.height);
   }
   //bandage solution to blocks not resetting color
