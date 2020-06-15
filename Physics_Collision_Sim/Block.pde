@@ -10,7 +10,7 @@ class Block {
     this.x = x;
     this.y = y;
     this.width = this.height = 50;
-    
+
     //Start at default colors
     this.resetColor();
   }
@@ -42,11 +42,15 @@ class Block {
       this.x += (1.6667 * this.velocity);
 
       //Determine which direction the friction should act
-      if(this.velocity > 0.01) {
+      if(this.velocity > 0.15) {
         this.velocity -= accelerationByFriction;
-      } else if(this.velocity < -0.01) {
+        System.out.println("if");
+      } else if(this.velocity < -0.15) {
         this.velocity += accelerationByFriction;
-      } else {
+        System.out.println("elseif");
+      } else if((this.velocity < 0.15)&&(this.velocity > -0.15))
+      {
+        System.out.println("else");
         this.velocity = 0;
         this.accelerationByFriction = 0;
       }
@@ -72,7 +76,7 @@ class Block {
     else {
       absoluteVelocity = 0;
     }
-    
+
     if(absoluteVelocity < 0.01) {
       this.resetColor();
     }
@@ -131,7 +135,7 @@ class Block {
       //red
     }
   }
-  
+
   //Reset color to the default value
   private void resetColor() {
     this.red = 0;
