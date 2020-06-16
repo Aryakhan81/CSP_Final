@@ -3,19 +3,32 @@ class Block {
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, x, y, width, height, accelerationByFriction;
   float kineticEnergy, momentum;
+  float absoluteVelocity;
+  float r, g, b;
   boolean shouldDraw = true;
 
-  public Block(float x, float y) {
+  public Block(float x, float y, float r, float g, float b) {
     this.x = x;
     this.y = y;
     this.width = this.height = 50;
+
+    //Start at default colors
+    this.r = r;
+    this.g = g;
+    this.b = b;
   }
 
   //Create the image of the block
   public void create() {
-    fill(20, 20, 200);
+    // fill(20, 20, 200);
+    fill(this.r, this.g, this.b);
     rect(this.x, this.y, this.width, this.height);
   }
+  //bandage solution to blocks not resetting color
+  // public void createOriginal() {
+  //   fill(20, 20, 200);
+  //   rect(this.x, this.y, this.width, this.height);
+  // }
 
   //Update the block's kinematic quantities
   public void update(float coefficientOfFriction) {
@@ -29,11 +42,15 @@ class Block {
       this.x += (1.6667 * this.velocity);
 
       //Determine which direction the friction should act
-      if(this.velocity > 0.01) {
+      if(this.velocity > 0.15) {
         this.velocity -= accelerationByFriction;
-      } else if(this.velocity < -0.01) {
+        // System.out.println("if");
+      } else if(this.velocity < -0.15) {
         this.velocity += accelerationByFriction;
-      } else {
+        // System.out.println("elseif");
+      } else if((this.velocity < 0.15)&&(this.velocity > -0.15))
+      {
+        // System.out.println("else");
         this.velocity = 0;
         this.accelerationByFriction = 0;
       }
@@ -41,12 +58,88 @@ class Block {
       //Set dynamics quantities
       this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
       this.momentum = this.mass * this.velocity;
-
+      //this.colorChange();
       this.create();
-
     }
-
   }
+    //old colorshifter do not use
+  //checks if velocity is positve or Negative and stores its absolute value in a variable
+  // public void colorChange(){
+  //   if(this.velocity < -0.01){
+  //     absoluteVelocity = this.velocity*-1;
+  //   }
+  //   else if (this.velocity > 0.01){
+  //     absoluteVelocity = this.velocity;
+  //   }
+  //   else {
+  //     absoluteVelocity = 0;
+  //   }
+  //
+  //   if(absoluteVelocity < 0.01) {
+  //     this.resetColor();
+  //   }
+  //   else if((absoluteVelocity > 0.01) && (absoluteVelocity < 1)){
+  //     red = -20;
+  //     green = -20;
+  //     blue =55;
+  //     //blue
+  //   }
+  //   else if(absoluteVelocity >= 1 && absoluteVelocity <2){
+  //     red =-20;
+  //     green =107.5;
+  //     blue =55;
+  //     //green blue
+  //   }
+  //   else if(absoluteVelocity >= 2 && absoluteVelocity <3){
+  //     red =-20;
+  //     green =235;
+  //     blue =55;
+  //     //cyan
+  //   }
+  //   else if(absoluteVelocity >= 3 && absoluteVelocity <4){
+  //     red =-20;
+  //     green =235;
+  //     blue =-72.5;
+  //     //blue green
+  //   }
+  //   else if(absoluteVelocity >= 4 && absoluteVelocity <5){
+  //     red =-20;
+  //     green =235;
+  //     blue =-200;
+  //     //green
+  //   }
+  //   else if(absoluteVelocity >= 5 && absoluteVelocity <6){
+  //     red =107.5;
+  //     green =235;
+  //     blue =-200;
+  //     //yellow green
+  //   }
+  //   else if(absoluteVelocity >= 6 && absoluteVelocity <7){
+  //     red =235;
+  //     green =235;
+  //     blue =-200;
+  //     //yellow
+  //   }
+  //   else if(absoluteVelocity >= 7 && absoluteVelocity <8){
+  //     red =235;
+  //     green =107.5;
+  //     blue =-200;
+  //     //orange
+  //   }
+  //   else if(absoluteVelocity >= 8 && absoluteVelocity <10){
+  //     red =235;
+  //     green =-20;
+  //     blue =-200;
+  //     //red
+  //   }
+  // }
+
+  //Reset color to the default value
+  //private void resetColor() {
+    //this.red = 0;
+    //this.blue = 0;
+    //this.green = 0;
+  //}
 
   //Give me the velocity. Should only be used on the action of the start button
   public void setInitialVelocity(float v) {
@@ -71,7 +164,7 @@ class Block {
 
   //Check to see if it has gone out of bounds
   public void checkBounds() {
-    if(this.x < posX1 - this.width/2 || this.x > posX2 + this.width/2) {
+    if(this.x < posX1 - this.width/2 - 5.5 || this.x > posX2 + this.width/2) {
       this.shouldDraw = false;
     } else {
       return;

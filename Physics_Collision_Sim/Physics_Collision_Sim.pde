@@ -15,6 +15,8 @@ public static Screen currentScreen = Screen.WELCOME;
 //Global constants for x position of each block
 public static final float posX1 = 20;
 public static final float posX2 = 720;
+//constant placeholder for graphs x y pos
+public static final int placeholder = 200;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
@@ -34,16 +36,23 @@ Slider mass1Slider = new Slider(862, 550, 0.1, 5);
 Slider mass2Slider = new Slider(862, 650, 0.1, 5);
 
 //blocks
-Block block1 = new Block(posX1, 300);
-Block block2 = new Block(posX2, 300);
+Block block1 = new Block(posX1, 300, 20, 20, 200);
+Block block2 = new Block(posX2, 300, 20, 200, 20);
 
 //sandGrains
 sandGrains tableSand = new sandGrains();
 //Graphs
-Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
-Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
-Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
-Graph momentumGraph = new Graph(400, 700, 200, 200, "Momentum 1 vs Time");
+//Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
+//Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
+//Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
+Graph momentum1Graph = new Graph(650, 400, 200, 200, "Momentum 1 vs Time");
+Graph momentum2Graph = new Graph(650, 700, 200, 200, "Momentum 2 vs Time");
+Graph position1Graph = new Graph(50, 400, 200, 200, "Position 1 vs Time");
+Graph position2Graph = new Graph(50, 700, 200, 200, "Position 2 vs Time");
+Graph velocity1Graph = new Graph(350, 400, 200, 200, "Velocity 1 vs Time");
+Graph velocity2Graph = new Graph(350, 700, 200, 200, "Velocity 2 vs Time");
+Graph kineticEnergy1Graph = new Graph(950, 400, 200, 200, "Kinetic Energy 1 vs Time");
+Graph kineticEnergy2Graph = new Graph(950, 700, 200, 200, "Kinetic Energy 2 vs Time");
 // x, y, width, height, title
 //kinetic Energy
 //velocity graph
@@ -198,12 +207,19 @@ void simulator() {
   block1.checkBounds();
   block2.checkBounds();
 
-  graph1.addData(frameRate - RandomGenerator.randomFloat(30));
-  graph2.addData(-1 * frameRate + RandomGenerator.randomFloat(30));
-  graph3.addData(RandomGenerator.randomInt(-30, 30));
+  // graph1.addData(frameRate - RandomGenerator.randomFloat(30));
+  // graph2.addData(-1 * frameRate + RandomGenerator.randomFloat(30));
+  // graph3.addData(RandomGenerator.randomInt(-30, 30));
 
   if(block1.shouldDraw) {
-    momentumGraph.addData(block1.momentum);
+    momentum1Graph.addData(block1.momentum);
+    momentum2Graph.addData(block2.momentum);
+    position1Graph.addData(block1.x);
+    position2Graph.addData(block2.x);
+    velocity1Graph.addData(block1.velocity);
+    velocity2Graph.addData(block2.velocity);
+    kineticEnergy1Graph.addData(block1.kineticEnergy);
+    kineticEnergy2Graph.addData(block2.kineticEnergy);
     //used to see if the block is drawn and creates graph data
   }
 //kinetic energy graph
@@ -215,10 +231,17 @@ void data() {
   //create the restart button
   restartButton.create(38, 31);
   //here is where the code for the data screen would go
-  graph1.create();
-  graph2.create();
-  graph3.create();
-  momentumGraph.create();
+//  graph1.create();
+//  graph2.create();
+//  graph3.create();
+  momentum1Graph.create();
+  momentum2Graph.create();
+  position1Graph.create();
+  position2Graph.create();
+  velocity1Graph.create();
+  velocity2Graph.create();
+  kineticEnergy1Graph.create();
+  kineticEnergy2Graph.create();
 }
 
 //this is the function for the restart buttons
@@ -252,18 +275,27 @@ public void restart() {
   block2.shouldDraw = true;
 
   //reset sand
+  //sandGrains
   tableSand.setMu(0);
   tableSand.update();
 
   //Reset the graphs
-  graph1.resetData();
-  graph1.shouldCollectData = false;
-  graph2.resetData();
-  graph2.shouldCollectData = false;
-  graph3.resetData();
-  graph3.shouldCollectData = false;
-  momentumGraph.resetData();
-  momentumGraph.shouldCollectData = false;
+  momentum1Graph.resetData();
+  momentum1Graph.shouldCollectData = false;
+  momentum2Graph.resetData();
+  momentum2Graph.shouldCollectData = false;
+  position1Graph.resetData();
+  position1Graph.shouldCollectData = false;
+  position2Graph.resetData();
+  position2Graph.shouldCollectData = false;
+  velocity1Graph.resetData();
+  velocity1Graph.shouldCollectData = false;
+  velocity2Graph.resetData();
+  velocity2Graph.shouldCollectData = false;
+  kineticEnergy1Graph.resetData();
+  kineticEnergy1Graph.shouldCollectData = false;
+  kineticEnergy2Graph.resetData();
+  kineticEnergy2Graph.shouldCollectData = false;
 }
 
 void settings() {
@@ -327,14 +359,22 @@ void mouseClicked() {
         block2.shouldDraw = true;
 
         //Reset the graphs
-        graph1.resetData();
-        graph1.shouldCollectData = true;
-        graph2.resetData();
-        graph2.shouldCollectData = true;
-        graph3.resetData();
-        graph3.shouldCollectData = true;
-        momentumGraph.resetData();
-        momentumGraph.shouldCollectData = true;
+        momentum1Graph.resetData();
+        momentum1Graph.shouldCollectData = true;
+        momentum2Graph.resetData();
+        momentum2Graph.shouldCollectData = true;
+        position1Graph.resetData();
+        position1Graph.shouldCollectData = true;
+        position2Graph.resetData();
+        position2Graph.shouldCollectData = true;
+        velocity1Graph.resetData();
+        velocity1Graph.shouldCollectData = true;
+        velocity2Graph.resetData();
+        velocity2Graph.shouldCollectData = true;
+        kineticEnergy1Graph.resetData();
+        kineticEnergy1Graph.shouldCollectData = true;
+        kineticEnergy2Graph.resetData();
+        kineticEnergy2Graph.shouldCollectData = true;
         //reset graphs part 2
       }
       //here is where the switch to data screen code is located

@@ -85,8 +85,6 @@ class Graph {
       //Go back to the simulator because there are no collected data
       currentScreen = Screen.SIMULATOR;
       minValue = 0;
-      
-      e.printStackTrace();
     }
     return minValue;
   }
@@ -96,16 +94,22 @@ class Graph {
     fill(0);
 
     //See if we should draw a negative y part as well
-    if(this.findMin() > 0) {
+    if(this.findMin() >= 0.0001) {
       
       //Set the maxX and maxY values
       this.maxX = (float)(this.data.size()/60) + 1;
       
       if(this.findMax() > 15) {
         this.maxY = 10 * ceil(this.findMax()/10);
-      } else if(this.findMax() < 15 && this.findMax() > 0.1) {
-        this.maxY = 5 * ceil(this.findMax()/5);
+      } else if(this.findMax() <= 15 && this.findMax() > 5) {
+        this.maxY = 5 * ceil(this.findMax()/5);       
+      } else if(this.findMax() <= 5 && this.findMax() > 1) {
+        this.maxY = 2 * ceil(this.findMax()/2);
       } else {
+        this.maxY = 1;
+      }
+      
+      if(Float.isNaN(1/this.maxY) || Float.isInfinite(1/this.maxY)) {
         this.maxY = 1;
       }
       
@@ -120,7 +124,7 @@ class Graph {
       text(Integer.toString((int)maxX), this.x + this.width - 5, this.y + 18);
       text(this.title, this.x + this.width/5, this.y - this.height - 5);
       
-    } else if(this.findMax() < 0) {
+    } else if(this.findMax() <= -0.0001) {
       
       //Set the maxX and maxY values
       this.maxX = (float)(this.data.size()/60) + 1;
@@ -128,9 +132,15 @@ class Graph {
       
       if(abs(this.findMin()) > 15) {
         this.maxY = -10 * ceil(abs(this.findMin()/10));
-      } else if(abs(this.findMin()) < 15 && abs(this.findMin()) > 0.1) {
-        this.maxY = -5 * ceil(abs(this.findMin()/5));
+      } else if(abs(this.findMin()) <= 15 && abs(this.findMin()) > 5) {
+        this.maxY = -5 * ceil(abs(this.findMin()/5));        
+      } else if(abs(this.findMin()) <= 5 && abs(this.findMin()) > 1) {
+        this.maxY = -2 * ceil(abs(this.findMin()/2));
       } else {
+        this.maxY = -1;
+      }
+      
+      if(Float.isNaN(1/this.maxY) || Float.isInfinite(1/this.maxY)) {
         this.maxY = -1;
       }
       
@@ -150,11 +160,18 @@ class Graph {
       //Set the maxX and maxY values
       this.maxX = (float)(this.data.size()/60) + 1;
       
+      //Find the maximum magnitude of the y's
       if(Math.max(abs(this.findMin()), abs(this.findMax())) > 15) {
         this.maxY = Math.max(abs(10 * ceil(this.findMin()/10)), abs(10 * ceil(this.findMax()/10)));
-      } else if(Math.max(abs(this.findMin()), abs(this.findMax())) < 15 && Math.max(abs(this.findMin()), abs(this.findMax())) > 0.1) {
+      } else if(Math.max(abs(this.findMin()), abs(this.findMax())) <= 15 && Math.max(abs(this.findMin()), abs(this.findMax())) > 5) {
         this.maxY = Math.max(abs(5 * ceil(this.findMin()/5)), abs(5 * ceil(this.findMax()/5)));
+      } else if(Math.max(abs(this.findMin()), abs(this.findMax())) <= 5 && Math.max(abs(this.findMin()), abs(this.findMax())) > 1) {
+        this.maxY = Math.max(abs(2 * ceil(this.findMin()/5)), abs(2 * ceil(this.findMax()/2)));
       } else {
+        this.maxY = 1;
+      }
+       
+      if(Float.isNaN(1/this.maxY) || Float.isInfinite(1/this.maxY)) {
         this.maxY = 1;
       }
       
@@ -187,12 +204,12 @@ class Graph {
       float ycoord = this.data.get(i) * scaledY;
       
       //See where we should draw the data points
-      if(this.findMin() > 0) {
+      if(this.findMin() >= 0.0001) {
         circle(this.x + xcoord, this.y - ycoord, 4);
-      } else if(this.findMax() < 0) {
-        circle(this.x + xcoord, this.y - (this.height - ycoord), 4);
+      } else if(this.findMax() <= -0.0001) {
+        circle(this.x + xcoord, (this.y - this.height) + ycoord, 4);
       } else {
-        circle(this.x + xcoord, this.y - (this.height/2 - ycoord/2), 4);
+        circle(this.x + xcoord, (this.y - this.height/2) - ycoord/2, 4);
       }
       
     }
