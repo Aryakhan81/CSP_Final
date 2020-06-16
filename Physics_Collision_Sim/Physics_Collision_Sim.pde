@@ -15,8 +15,6 @@ public static Screen currentScreen = Screen.WELCOME;
 //Global constants for x position of each block
 public static final float posX1 = 20;
 public static final float posX2 = 720;
-//constant placeholder for graphs x y pos
-public static final int placeholder = 200;
 
 //buttons
 Button startButton = new Button(525, 475, 150, 50, "Start!", Screen.SIMULATOR);
@@ -29,7 +27,7 @@ TwoWayButton elasticButton = new TwoWayButton(850, 100, 150, 50, "elastic", fals
 TwoWayButton inelasticButton = new TwoWayButton(1002, 100, 150, 50, "inelastic", true);
 
 //sliders
-Slider frictionSlider = new Slider(862, 250, 0, 1);
+Slider frictionSlider = new Slider(862, 250, 0, 0.1);
 Slider initialVelocity1Slider = new Slider(862, 350, 0, 10);
 Slider initialVelocity2Slider = new Slider(862, 450, 0, -10);
 Slider mass1Slider = new Slider(862, 550, 0.1, 5);
@@ -185,10 +183,6 @@ void simulator() {
       inelasticCollision(block1, block2);
     }
   }
-  //Show the data screen button if the blocks have stopped or left the screen
-  if(block1.velocity < 0.001 || block2.velocity < 0.001 || block1.shouldDraw == false || block2.shouldDraw == false) {
-    dataButton.create(38, 31);
-  }
 
   fill(0);
   //Paste the current kinematic and dynamic values to the screen for block 1
@@ -212,18 +206,19 @@ void simulator() {
   // graph3.addData(RandomGenerator.randomInt(-30, 30));
 
   if(block1.shouldDraw) {
-    momentum1Graph.addData(block1.momentum);
-    momentum2Graph.addData(block2.momentum);
-    position1Graph.addData(block1.x);
-    position2Graph.addData(block2.x);
-    velocity1Graph.addData(block1.velocity);
-    velocity2Graph.addData(block2.velocity);
-    kineticEnergy1Graph.addData(block1.kineticEnergy);
-    kineticEnergy2Graph.addData(block2.kineticEnergy);
+    momentum1Graph.addData(block1.momentum);  
+    position1Graph.addData(block1.x);  
+    velocity1Graph.addData(block1.velocity);   
+    kineticEnergy1Graph.addData(block1.kineticEnergy);    
     //used to see if the block is drawn and creates graph data
   }
-//kinetic energy graph
-//velocity graph
+  
+  if(block2.shouldDraw) {
+    momentum2Graph.addData(block2.momentum);
+    position2Graph.addData(block2.x);
+    velocity2Graph.addData(block2.velocity);
+    kineticEnergy2Graph.addData(block2.kineticEnergy);
+  }
 }
 
 void data() {
