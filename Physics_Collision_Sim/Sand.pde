@@ -26,7 +26,7 @@ class sandGrains{
       350//y3
       );
       //triangle x1, y1, x2, y2, x3, y3
-  }
+    }
   stroke(1);
   }
   public void update(){
@@ -38,7 +38,7 @@ class sandGrains{
   }
   public void grainSize(){
     if (coefficientOfFriction <= 0.33 && coefficientOfFriction > 0){
-      grainRadius = (40 * coefficientOfFriction);
+      grainRadius = (160 * coefficientOfFriction);
 
     }
     else if(coefficientOfFriction > 0.33 && coefficientOfFriction <= 0.66){

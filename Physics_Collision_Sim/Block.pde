@@ -3,7 +3,7 @@ class Block {
   //Definitely x, y initial velocity, current velocity, mass, etc. Not sure what else
   float velocity, mass, x, y, width, height, accelerationByFriction;
   float kineticEnergy, momentum;
-  float absoluteVelocity;
+  //float absoluteVelocity;
   float r, g, b;
   boolean shouldDraw = true;
 
@@ -37,24 +37,26 @@ class Block {
     if(this.shouldDraw) {
 
       //Update kinematic quantities
-      float friction = coefficientOfFriction * mass * g;
-      this.accelerationByFriction = friction / mass;
+      float friction = coefficientOfFriction * this.mass * g;
+      this.accelerationByFriction = friction / this.mass;
       this.x += (1.6667 * this.velocity);
-
-      //Determine which direction the friction should act
-      if(this.velocity > 0.15) {
-        this.velocity -= accelerationByFriction;
-        // System.out.println("if");
-      } else if(this.velocity < -0.15) {
-        this.velocity += accelerationByFriction;
-        // System.out.println("elseif");
-      } else if((this.velocity < 0.15)&&(this.velocity > -0.15))
-      {
-        // System.out.println("else");
+      
+      if(abs(this.velocity) < 0.1) {
         this.velocity = 0;
-        this.accelerationByFriction = 0;
       }
-
+      
+      for(int i = 0; i < 20; i++) {
+        //Determine which direction the friction should act
+        if(this.velocity > 0.001) {
+          this.velocity -= this.accelerationByFriction/20;
+        } else if(this.velocity < -0.001) {
+          this.velocity += this.accelerationByFriction/116;
+        } else {
+          this.velocity = 0;
+          this.accelerationByFriction = 0;
+        }
+      }
+      
       //Set dynamics quantities
       this.kineticEnergy = 0.5 * this.mass * pow(this.velocity, 2);
       this.momentum = this.mass * this.velocity;
@@ -164,7 +166,7 @@ class Block {
 
   //Check to see if it has gone out of bounds
   public void checkBounds() {
-    if(this.x < posX1 - this.width/2 - 5.5 || this.x > posX2 + this.width/2) {
+    if(this.x < posX1 - this.width/2 + 5 || this.x > posX2 + this.width/2) {
       this.shouldDraw = false;
     } else {
       return;
