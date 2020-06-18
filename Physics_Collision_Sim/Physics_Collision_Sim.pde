@@ -45,14 +45,14 @@ sandGrains tableSand = new sandGrains();
 //Graph graph1 = new Graph(100, 400, 200, 200, "Test Graph");
 //Graph graph2 = new Graph(100, 700, 200, 200, "Test Graph Negative");
 //Graph graph3 = new Graph(400, 400, 200, 200, "Test Graph Mixed");
-Graph momentum1Graph = new Graph(650, 400, 200, 200, "Momentum 1 vs Time");
-Graph momentum2Graph = new Graph(650, 700, 200, 200, "Momentum 2 vs Time");
-Graph position1Graph = new Graph(50, 400, 200, 200, "Position 1 vs Time");
-Graph position2Graph = new Graph(50, 700, 200, 200, "Position 2 vs Time");
-Graph velocity1Graph = new Graph(350, 400, 200, 200, "Velocity 1 vs Time");
-Graph velocity2Graph = new Graph(350, 700, 200, 200, "Velocity 2 vs Time");
-Graph kineticEnergy1Graph = new Graph(950, 400, 200, 200, "Kinetic Energy 1 vs Time");
-Graph kineticEnergy2Graph = new Graph(950, 700, 200, 200, "Kinetic Energy 2 vs Time");
+Graph momentum1Graph = new Graph(650, 400, 200, 200, "Momentum Blue vs Time");
+Graph momentum2Graph = new Graph(650, 700, 200, 200, "Momentum Green vs Time");
+Graph position1Graph = new Graph(50, 400, 200, 200, "Position Blue vs Time");
+Graph position2Graph = new Graph(50, 700, 200, 200, "Position Green vs Time");
+Graph velocity1Graph = new Graph(350, 400, 200, 200, "Velocity Blue vs Time");
+Graph velocity2Graph = new Graph(350, 700, 200, 200, "Velocity Green vs Time");
+Graph kineticEnergy1Graph = new Graph(950, 400, 200, 200, "Kinetic Energy Blue vs Time");
+Graph kineticEnergy2Graph = new Graph(950, 700, 200, 200, "Kinetic Energy Green vs Time");
 // x, y, width, height, title
 //kinetic Energy
 //velocity graph
@@ -138,10 +138,10 @@ void simulator() {
   fill(0);
   text("Collision type:", 925, 75);
   text("Coefficient of friction", 862, 235);
-  text("Initial velocity of block 1 (m/s)", 862, 335);
-  text("Initial velocity of block 2 (m/s)", 862, 435);
-  text("Mass of block 1 (kg)", 865, 535);
-  text("Mass of block 2 (kg)", 865, 635);
+  text("Initial velocity of blue block (m/s)", 862, 335);
+  text("Initial velocity of green block (m/s)", 862, 435);
+  text("Mass of blue block (kg)", 865, 535);
+  text("Mass of green block (kg)", 865, 635);
   //update the current value of the sliders
   frictionSlider.updateCurrentValue();
   initialVelocity1Slider.updateCurrentValue();
@@ -191,14 +191,14 @@ void simulator() {
   }
 
   fill(0);
-  //Paste the current kinematic and dynamic values to the screen for block 1
-  text("Block 1:", 200, 25);
+  //Paste the current kinematic and dynamic values to the screen for blue block
+  text("Blue Block:", 200, 25);
   text("Velocity: " + Float.toString(block1.velocity) + " m/s", 200, 40);
   text("Momentum: " + Float.toString(block1.momentum) + " N*s", 200, 55);
   text("Kinetic Energy: " + Float.toString(block1.kineticEnergy) + " J", 200, 70);
 
-  //Paste the current kinematic and dynamic values to the screen for block 2
-  text("Block 2:", 450, 25);
+  //Paste the current kinematic and dynamic values to the screen for green block
+  text("Green Block:", 450, 25);
   text("Velocity: " + Float.toString(block2.velocity) + " m/s", 450, 40);
   text("Momentum: " + Float.toString(block2.momentum) + " N*s", 450, 55);
   text("Kinetic Energy: " + Float.toString(block2.kineticEnergy) + " J", 450, 70);
